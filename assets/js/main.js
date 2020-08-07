@@ -29,10 +29,10 @@ jQuery(document).ready(function($) {
     /* jQuery RSS - https://github.com/sdepold/jquery-rss */
     
     /* Github Calendar - https://github.com/IonicaBizau/github-calendar */
-    GitHubCalendar("#calendar", "byronjd", { responsive: true });
+    GitHubCalendar("#calendar", "bydavid1", { responsive: true });
     
     /* Github Activity Feed - https://github.com/caseyscarborough/github-activity */
-    GitHubActivity.feed({ username: "byronjd", selector: "#feed", limit: 5 });
+    GitHubActivity.feed({ username: "bydavid1", selector: "#feed", limit: 5 });
 
 
 });
