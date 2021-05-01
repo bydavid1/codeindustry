@@ -2,9 +2,9 @@ import React from 'react'
 
 const Footer = function() {
     return (
-        <footer class="footer">
-            <div class="container text-center">
-                <small class="copyright">Template made with <i class="fas fa-heart"></i> by <a
+        <footer className="footer">
+            <div className="container text-center">
+                <small className="copyright">Template made with <i className="fas fa-heart"></i> by <a
                         href="https://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
             </div>
         </footer>

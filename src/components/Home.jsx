@@ -2,18 +2,19 @@ import React, { Fragment } from 'react';
 import Project from './Project.jsx';
 import Skill from './Skill.jsx'
 import Header from './Header.jsx'
+import GithubActivity from './GithubActivity.jsx'
 
 const Home = function() {
     return (
        <Fragment>
            <Header />
-           <div class="container sections-wrapper">
-               <div class="row">
-                   <div class="primary col-lg-8 col-12">
-                       <section class="about section">
-                           <div class="section-inner shadow-sm rounded">
-                               <h2 class="heading">About Me</h2>
-                               <div class="content">
+           <div className="container sections-wrapper">
+               <div className="row">
+                   <div className="primary col-lg-8 col-12">
+                       <section className="about section">
+                           <div className="section-inner shadow-sm rounded">
+                               <h2 className="heading">About Me</h2>
+                               <div className="content">
                                    <p>I'm a web and mobile developer, I have two years of programming experience. I'm
                                        self-taught, creative, passionate about design, I seek to expand my skills daily
                                        and
@@ -25,15 +26,15 @@ const Home = function() {
                            </div>
                        </section>
 
-                       <section class="latest section">
-                           <div class="section-inner shadow-sm rounded">
-                               <h2 class="heading">Latest Projects</h2>
-                               <div class="content">
+                       <section className="latest section">
+                           <div className="section-inner shadow-sm rounded">
+                               <h2 className="heading">Latest Projects</h2>
+                               <div className="content">
                                    <Project title="Web system inventory (Own)"
                                        link="https://github.com/bydavid1/inventory-web-laravel"
                                        image="assets/images/projects/project1-1.png" description="" />
 
-                                   <hr class="divider" />
+                                   <hr className="divider" />
 
                                    <Project title="My version pocket" link="https://still-earth-29114.herokuapp.com/#/"
                                        image="assets/images/projects/project7.png" description="Project made using technologies like Vue and Laravel. Is my
@@ -63,50 +64,48 @@ const Home = function() {
                                        link="https://github.com/bydavid1/inventory-web-laravel"
                                        image="assets/images/projects/project1-1.png" description="" />
 
-                                   <h6><i class="fa fa-exclamation-circle mr-1"></i>Some projects are missing</h6>
+                                   <h6><i className="fa fa-exclamation-circle mr-1"></i>Some projects are missing</h6>
                                    <hr />
-                                   <a class="btn btn-cta-secondary" href="https://github.com/bydavid1">More on GitHub <i
-                                           class="fas fa-chevron-right pt-1"></i></a>
+                                   <a className="btn btn-cta-secondary" href="https://github.com/bydavid1">More on GitHub <i
+                                           className="fas fa-chevron-right pt-1"></i></a>
                                </div>
                            </div>
                        </section>
 
-                       <section class="experience section">
-                           <div class="section-inner shadow-sm rounded">
-                               <h2 class="heading">Work Experience</h2>
-                               <div class="content">
-                                   <div class="item">
-                                       <h3 class="title">Web Developer <span class="place"><a href="#">Grupo
+                       <section className="experience section">
+                           <div className="section-inner shadow-sm rounded">
+                               <h2 className="heading">Work Experience</h2>
+                               <div className="content">
+                                   <div className="item">
+                                       <h3 className="title">Web Developer <span className="place"><a href="#">Grupo
                                                    Fenix</a></span>
-                                           <span class="year">(2019 - 2020)</span></h3>
+                                           <span className="year">(2019 - 2020)</span></h3>
                                        <p>Building description</p>
                                    </div>
                                </div>
                            </div>
                        </section>
 
-                       <section class="github section">
-                           <div class="section-inner shadow-sm rounded">
-                               <h2 class="heading">My GitHub</h2>
-                               <div id="calendar" class="github-graph"></div>
-                               <div id="feed" class="ghfeed">
-                               </div>
+                       <section className="github section">
+                           <div className="section-inner shadow-sm rounded">
+                               <h2 className="heading">My GitHub</h2>
+                                <GithubActivity/>
                            </div>
                        </section>
 
                    </div>
-                   <div class="secondary col-lg-4 col-12">
-                       <aside class="info aside section">
-                           <div class="section-inner shadow-sm rounded">
-                               <h2 class="heading sr-only">Basic Information</h2>
-                               <div class="content">
-                                   <ul class="list-unstyled">
-                                       <li><i class="fas fa-map-marker-alt"></i><span class="sr-only">Location:</span>El
+                   <div className="secondary col-lg-4 col-12">
+                       <aside className="info aside section">
+                           <div className="section-inner shadow-sm rounded">
+                               <h2 className="heading sr-only">Basic Information</h2>
+                               <div className="content">
+                                   <ul className="list-unstyled">
+                                       <li><i className="fas fa-map-marker-alt"></i><span className="sr-only">Location:</span>El
                                            Salvador</li>
-                                       <li><i class="fas fa-envelope"></i><span class="sr-only">Email:</span><a
+                                       <li><i className="fas fa-envelope"></i><span className="sr-only">Email:</span><a
                                                href="#">
                                                byronjimenez9911@gmail.com</a></li>
-                                       <li><i class="fas fa-calendar"></i><span class="sr-only">Born
+                                       <li><i className="fas fa-calendar"></i><span className="sr-only">Born
                                                Date:</span>February,
                                            22/1999</li>
                                    </ul>
@@ -114,11 +113,11 @@ const Home = function() {
                            </div>
                        </aside>
 
-                       <aside class="skills aside section">
-                           <div class="section-inner shadow-sm rounded">
-                               <h2 class="heading">Skills</h2>
-                               <div class="content">
-                                   <div class="skillset">
+                       <aside className="skills aside section">
+                           <div className="section-inner shadow-sm rounded">
+                               <h2 className="heading">Skills</h2>
+                               <div className="content">
+                                   <div className="skillset">
                                        <Skill title="PHP & Laravel" status="Learnig" level="60" />
                                        <Skill title="Javascript &amp; jQuery" status="Learnig" level="50" />
                                        <Skill title="CSS & Bootstrap" status="Learnig" level="75" />
@@ -128,8 +127,8 @@ const Home = function() {
                                        <Skill title="Photoshop" status="Learnig" level="70" />
                                        <Skill title="Illustrator" status="Learnig" level="35" />
 
-                                       <p><a class="more-link" href="https://github.com/bydavid1"><i
-                                                   class="fas fa-external-link-alt"></i>More on
+                                       <p><a className="more-link" href="https://github.com/bydavid1"><i
+                                                   className="fas fa-external-link-alt"></i>More on
                                                GitHub</a></p>
                                    </div>
                                </div>
@@ -137,33 +136,33 @@ const Home = function() {
                        </aside>
 
 
-                       <aside class="education aside section">
-                           <div class="section-inner shadow-sm rounded">
-                               <h2 class="heading">Education</h2>
-                               <div class="content">
-                                   <div class="item">
-                                       <h3 class="title"><i class="fas fa-graduation-cap"></i> Técnico en Ingeniería de
+                       <aside className="education aside section">
+                           <div className="section-inner shadow-sm rounded">
+                               <h2 className="heading">Education</h2>
+                               <div className="content">
+                                   <div className="item">
+                                       <h3 className="title"><i className="fas fa-graduation-cap"></i> Técnico en Ingeniería de
                                            Sistemas Informaticos</h3>
-                                       <h4 class="university">ITCA - FEPADE Santa Ana <span
-                                               class="year">(2017-2018)</span>
+                                       <h4 className="university">ITCA - FEPADE Santa Ana <span
+                                               className="year">(2017-2018)</span>
                                        </h4>
                                    </div>
-                                   <h4 class="heading">Courses</h4>
-                                   <div class="item">
-                                       <h3 class="title"><i class="fas fa-graduation-cap"></i>Desarrollador de Apps
+                                   <h4 className="heading">Courses</h4>
+                                   <div className="item">
+                                       <h3 className="title"><i className="fas fa-graduation-cap"></i>Desarrollador de Apps
                                            Moviles
                                            con
                                            Xamarin</h3>
-                                       <h4 class="university">Centro de Desarrollo de Software(CDS) Santa Ana <span
-                                               class="year">(2019 - 2020)</span></h4>
+                                       <h4 className="university">Centro de Desarrollo de Software(CDS) Santa Ana <span
+                                               className="year">(2019 - 2020)</span></h4>
                                    </div>
-                                   <div class="item">
-                                       <h3 class="title"><i class="fas fa-graduation-cap"></i>Técnico Programador
+                                   <div className="item">
+                                       <h3 className="title"><i className="fas fa-graduation-cap"></i>Técnico Programador
                                            Analista
                                            de
                                            Computadoras</h3>
-                                       <h4 class="university">Centro Técnico Superior en Computación <span
-                                               class="year">(2013 -
+                                       <h4 className="university">Centro Técnico Superior en Computación <span
+                                               className="year">(2013 -
                                                2014)</span></h4>
                                    </div>
                                </div>
@@ -171,69 +170,66 @@ const Home = function() {
                        </aside>
 
 
-                       <aside class="languages aside section">
-                           <div class="section-inner shadow-sm rounded">
-                               <h2 class="heading">Languages</h2>
-                               <div class="content">
-                                   <ul class="list-unstyled">
-                                       <li class="item">
-                                           <span class="title"><strong>English:</strong></span>
+                       <aside className="languages aside section">
+                           <div className="section-inner shadow-sm rounded">
+                               <h2 className="heading">Languages</h2>
+                               <div className="content">
+                                   <ul className="list-unstyled">
+                                       <li className="item">
+                                           <span className="title"><strong>English:</strong></span>
                                        </li>
-                                       <li class="item">
-                                           <span class="level">Write <br class="visible-sm visible-xs" /><i
-                                                   class="fas fa-star"></i> <i class="fas fa-star"></i></span>
+                                       <li className="item">
+                                           <span className="level">Write <br className="visible-sm visible-xs" /><i
+                                                   className="fas fa-star"></i> <i className="fas fa-star"></i></span>
                                        </li>
-                                       <li class="item">
-                                           <span class="level">Read <br class="visible-sm visible-xs" /><i
-                                                   class="fas fa-star"></i> <i class="fas fa-star"></i> <i
-                                                   class="fas fa-star"></i></span>
+                                       <li className="item">
+                                           <span className="level">Read <br className="visible-sm visible-xs" /><i
+                                                   className="fas fa-star"></i> <i className="fas fa-star"></i> <i
+                                                   className="fas fa-star"></i></span>
                                        </li>
-                                       <li class="item">
-                                           <span class="level">Speak <br class="visible-sm visible-xs" /><i
-                                                   class="fas fa-star"></i> <i class="fas fa-star"></i></span>
+                                       <li className="item">
+                                           <span className="level">Speak <br className="visible-sm visible-xs" /><i
+                                                   className="fas fa-star"></i> <i className="fas fa-star"></i></span>
                                        </li>
-                                       <h6><i class="fa fa-exclamation-circle mr-1"></i>I'm getting better every day
+                                       <h6><i className="fa fa-exclamation-circle mr-1"></i>I'm getting better every day
                                        </h6>
                                    </ul>
                                </div>
                            </div>
                        </aside>
 
-                       <aside class="list music aside section">
-                           <div class="section-inner shadow-sm rounded">
-                               <h2 class="heading">Favourite coding music</h2>
-                               <div class="content">
+                       <aside className="list music aside section">
+                           <div className="section-inner shadow-sm rounded">
+                               <h2 className="heading">Favourite coding music</h2>
+                               <div className="content">
                                    <iframe
                                        src="https://open.spotify.com/embed?uri=spotify:playlist:7D3Qw59hB8XhqUdIZImepN"
-                                       width="300" height="380" frameborder="0" allowtransparency="true"
+                                       width="300" height="380" frameBorder="0" allowtransparency="true"
                                        allow="encrypted-media"></iframe>
                                </div>
                            </div>
                        </aside>
 
-                       <aside class="list conferences aside section">
-                           <aside class="credits aside section">
-                               <div class="section-inner shadow-sm rounded">
-                                   <h2 class="heading">Credits</h2>
-                                   <div class="content">
-                                       <ul class="list-unstyled pb-2">
+                       <aside className="list conferences aside section">
+                           <aside className="credits aside section">
+                               <div className="section-inner shadow-sm rounded">
+                                   <h2 className="heading">Credits</h2>
+                                   <div className="content">
+                                       <ul className="list-unstyled pb-2">
                                            <li><a href="https://getbootstrap.com/" target="_blank"><i
-                                                       class="fas fa-external-link-alt"></i>Bootstrap</a></li>
+                                                       className="fas fa-external-link-alt"></i>Bootstrap</a></li>
                                            <li><a href="https://fortawesome.github.io/Font-Awesome/" target="_blank"><i
-                                                       class="fas fa-external-link-alt"></i>FontAwesome</a></li>
+                                                       className="fas fa-external-link-alt"></i>FontAwesome</a></li>
                                            <li><a href="https://jquery.com/" target="_blank"><i
-                                                       class="fas fa-external-link-alt"></i>jQuery</a></li>
+                                                       className="fas fa-external-link-alt"></i>jQuery</a></li>
                                            <li><a href="https://github.com/IonicaBizau/github-calendar"
-                                                   target="_blank"><i class="fas fa-external-link-alt"></i>GitHub
+                                                   target="_blank"><i className="fas fa-external-link-alt"></i>GitHub
                                                    Calendar Plugin</a></li>
 
                                            <li><a href="https://caseyscarborough.com/projects/github-activity/"
-                                                   target="_blank"><i class="fas fa-external-link-alt"></i>GitHub
+                                                   target="_blank"><i className="fas fa-external-link-alt"></i>GitHub
                                                    Activity
                                                    Stream</a></li>
-
-                                           <li><a href="https://github.com/sdepold/jquery-rss" target="_blank"><i
-                                                       class="fas fa-external-link-alt"></i>jQuery RSS</a></li>
                                        </ul>
                                    </div>
                                </div>

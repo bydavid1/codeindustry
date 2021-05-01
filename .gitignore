@@ -1,3 +1,6 @@
 node_modules
-public/
+public/css
+public/js
+public/index.html
+public/storage
 storage/
