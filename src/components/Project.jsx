@@ -1,4 +1,5 @@
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Project = function(props) {
     return (
@@ -9,8 +10,7 @@ const Project = function(props) {
             <div className="desc col-md-8 col-12">
                 <h3 className="title"><a href={props.link} target="_blank">{props.title}</a></h3>
                 <p className="mb-2">{props.description}</p>
-                <p><a className="more-link" href={props.link} target="_blank"><i
-                            className="fas fa-external-link-alt"></i>Demo</a></p>
+                <p><a className="more-link" href={props.link} target="_blank"><FontAwesomeIcon icon="external-link-alt"/>Demo</a></p>
             </div>
         </div>
     )

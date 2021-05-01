@@ -1,12 +1,20 @@
 import React, { Fragment } from 'react';
-import Project from './Project.jsx';
-import Skill from './Skill.jsx'
-import Header from './Header.jsx'
-import GithubActivity from './GithubActivity.jsx'
+import Project from '../components/Project.jsx';
+import Skill from '../components/Skill.jsx'
+import Header from '../components/Header.jsx'
+import GithubActivity from '../components/GithubActivity.jsx'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import MetaTags from 'react-meta-tags'
 
 const Home = function() {
     return (
        <Fragment>
+           <MetaTags>
+                <title>Portfolio</title>
+                <meta property="og:title" content="Byron portfolio"/>
+                <meta property="og:description" content="Professional info about Byron Jimenez"/>
+                <meta property="og:image" content=""/>
+           </MetaTags>
            <Header />
            <div className="container sections-wrapper">
                <div className="row">
@@ -64,10 +72,10 @@ const Home = function() {
                                        link="https://github.com/bydavid1/inventory-web-laravel"
                                        image="assets/images/projects/project1-1.png" description="" />
 
-                                   <h6><i className="fa fa-exclamation-circle mr-1"></i>Some projects are missing</h6>
+                                   <h6><FontAwesomeIcon icon="info-circle"/>Some projects are missing</h6>
                                    <hr />
-                                   <a className="btn btn-cta-secondary" href="https://github.com/bydavid1">More on GitHub <i
-                                           className="fas fa-chevron-right pt-1"></i></a>
+                                   <a className="btn btn-cta-secondary" href="https://github.com/bydavid1">More on GitHub 
+                                   <FontAwesomeIcon icon="chevron-right" className="ms-2"/></a>
                                </div>
                            </div>
                        </section>
@@ -100,12 +108,12 @@ const Home = function() {
                                <h2 className="heading sr-only">Basic Information</h2>
                                <div className="content">
                                    <ul className="list-unstyled">
-                                       <li><i className="fas fa-map-marker-alt"></i><span className="sr-only">Location:</span>El
+                                       <li><FontAwesomeIcon icon="map-marker-alt"/><span className="sr-only">Location:</span>El
                                            Salvador</li>
-                                       <li><i className="fas fa-envelope"></i><span className="sr-only">Email:</span><a
+                                       <li><FontAwesomeIcon icon="envelope"/><span className="sr-only">Email:</span><a
                                                href="#">
                                                byronjimenez9911@gmail.com</a></li>
-                                       <li><i className="fas fa-calendar"></i><span className="sr-only">Born
+                                       <li><FontAwesomeIcon icon="calendar"/><span className="sr-only">Born
                                                Date:</span>February,
                                            22/1999</li>
                                    </ul>
@@ -127,8 +135,7 @@ const Home = function() {
                                        <Skill title="Photoshop" status="Learnig" level="70" />
                                        <Skill title="Illustrator" status="Learnig" level="35" />
 
-                                       <p><a className="more-link" href="https://github.com/bydavid1"><i
-                                                   className="fas fa-external-link-alt"></i>More on
+                                       <p><a className="more-link" href="https://github.com/bydavid1"><FontAwesomeIcon icon="external-link-alt"/>More on
                                                GitHub</a></p>
                                    </div>
                                </div>
@@ -141,7 +148,7 @@ const Home = function() {
                                <h2 className="heading">Education</h2>
                                <div className="content">
                                    <div className="item">
-                                       <h3 className="title"><i className="fas fa-graduation-cap"></i> Técnico en Ingeniería de
+                                       <h3 className="title"><FontAwesomeIcon icon="graduation-cap"/> Técnico en Ingeniería de
                                            Sistemas Informaticos</h3>
                                        <h4 className="university">ITCA - FEPADE Santa Ana <span
                                                className="year">(2017-2018)</span>
@@ -149,7 +156,7 @@ const Home = function() {
                                    </div>
                                    <h4 className="heading">Courses</h4>
                                    <div className="item">
-                                       <h3 className="title"><i className="fas fa-graduation-cap"></i>Desarrollador de Apps
+                                       <h3 className="title"><FontAwesomeIcon icon="graduation-cap"/>Desarrollador de Apps
                                            Moviles
                                            con
                                            Xamarin</h3>
@@ -157,7 +164,7 @@ const Home = function() {
                                                className="year">(2019 - 2020)</span></h4>
                                    </div>
                                    <div className="item">
-                                       <h3 className="title"><i className="fas fa-graduation-cap"></i>Técnico Programador
+                                       <h3 className="title"><FontAwesomeIcon icon="graduation-cap"/>Técnico Programador
                                            Analista
                                            de
                                            Computadoras</h3>
@@ -179,19 +186,26 @@ const Home = function() {
                                            <span className="title"><strong>English:</strong></span>
                                        </li>
                                        <li className="item">
-                                           <span className="level">Write <br className="visible-sm visible-xs" /><i
-                                                   className="fas fa-star"></i> <i className="fas fa-star"></i></span>
+                                           <span className="level">Write <br className="visible-sm visible-xs"/>
+                                                <FontAwesomeIcon icon="star"/>
+                                                <FontAwesomeIcon icon="star"/>
+                                           </span>
                                        </li>
                                        <li className="item">
-                                           <span className="level">Read <br className="visible-sm visible-xs" /><i
-                                                   className="fas fa-star"></i> <i className="fas fa-star"></i> <i
-                                                   className="fas fa-star"></i></span>
+                                           <span className="level">Read <br className="visible-sm visible-xs"/>
+                                                <FontAwesomeIcon icon="star"/>
+                                                <FontAwesomeIcon icon="star"/>
+                                                <FontAwesomeIcon icon="star"/>
+                                                <FontAwesomeIcon icon="star"/>
+                                           </span>
                                        </li>
                                        <li className="item">
-                                           <span className="level">Speak <br className="visible-sm visible-xs" /><i
-                                                   className="fas fa-star"></i> <i className="fas fa-star"></i></span>
+                                           <span className="level">Speak <br className="visible-sm visible-xs"/>
+                                                <FontAwesomeIcon icon="star"/>
+                                                <FontAwesomeIcon icon="star"/>
+                                           </span>
                                        </li>
-                                       <h6><i className="fa fa-exclamation-circle mr-1"></i>I'm getting better every day
+                                       <h6><FontAwesomeIcon icon="info-circle" className="me-1"/>I'm getting better every day
                                        </h6>
                                    </ul>
                                </div>
@@ -216,18 +230,15 @@ const Home = function() {
                                    <h2 className="heading">Credits</h2>
                                    <div className="content">
                                        <ul className="list-unstyled pb-2">
-                                           <li><a href="https://getbootstrap.com/" target="_blank"><i
-                                                       className="fas fa-external-link-alt"></i>Bootstrap</a></li>
-                                           <li><a href="https://fortawesome.github.io/Font-Awesome/" target="_blank"><i
-                                                       className="fas fa-external-link-alt"></i>FontAwesome</a></li>
-                                           <li><a href="https://jquery.com/" target="_blank"><i
-                                                       className="fas fa-external-link-alt"></i>jQuery</a></li>
+                                           <li><a href="https://getbootstrap.com/" target="_blank">
+                                               <FontAwesomeIcon icon="external-link-alt"/>Bootstrap</a></li>
+                                           <li><a href="https://fortawesome.github.io/Font-Awesome/" target="_blank">
+                                               <FontAwesomeIcon icon="external-link-alt"/>FontAwesome</a></li>
                                            <li><a href="https://github.com/IonicaBizau/github-calendar"
-                                                   target="_blank"><i className="fas fa-external-link-alt"></i>GitHub
+                                                   target="_blank"><FontAwesomeIcon icon="external-link-alt"/>GitHub
                                                    Calendar Plugin</a></li>
-
                                            <li><a href="https://caseyscarborough.com/projects/github-activity/"
-                                                   target="_blank"><i className="fas fa-external-link-alt"></i>GitHub
+                                                   target="_blank"><FontAwesomeIcon icon="external-link-alt"/>GitHub
                                                    Activity
                                                    Stream</a></li>
                                        </ul>
