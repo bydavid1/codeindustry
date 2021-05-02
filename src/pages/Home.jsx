@@ -12,7 +12,8 @@ class Home extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            projects: []
+            projects: [],
+            skills: []
         }
     }
 
@@ -23,7 +24,15 @@ class Home extends React.Component {
         })
         .catch(err => {
             console.log(err)
-        }) 
+        })
+
+        api.get('/skills')
+        .then(response => {
+            this.setState({skills: response.data})
+        })
+        .catch(err => {
+            console.log(err)
+        })
     }
 
     render() {
@@ -35,7 +44,26 @@ class Home extends React.Component {
                 image={"storage/images/projects/" + project.image} description={project.description} />
             )
         } else {
-            projects = <h5>Cargando proyectos...</h5>   
+            projects = <div className="d-flex justify-content-center">
+                            <div class="spinner-grow text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>  
+                       </div>
+
+        }
+
+        let skills;
+
+        if (this.state.skills.length > 0) {
+            skills = this.state.skills.map(skill => 
+                <Skill key={skill._id} title={skill.title} status={skill.status} level={skill.level} />
+            )
+        } else {
+            skills = <div className="d-flex justify-content-center">
+                        <div class="spinner-grow text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>  
+                    </div>  
         }
 
         return (
@@ -124,15 +152,7 @@ class Home extends React.Component {
                                 <h2 className="heading">Skills</h2>
                                 <div className="content">
                                     <div className="skillset">
-                                        <Skill title="PHP & Laravel" status="Learnig" level="60" />
-                                        <Skill title="Javascript &amp; jQuery" status="Learnig" level="50" />
-                                        <Skill title="CSS & Bootstrap" status="Learnig" level="75" />
-                                        <Skill title="Xamarin" status="Learnig" level="50" />
-                                        <Skill title="Vue js" status="Learnig" level="50" />
-                                        <Skill title="Wordpress" status="Learnig" level="75" />
-                                        <Skill title="Photoshop" status="Learnig" level="70" />
-                                        <Skill title="Illustrator" status="Learnig" level="35" />
-
+                                        {skills}
                                         <p><a className="more-link" href="https://github.com/bydavid1"><FontAwesomeIcon icon="external-link-alt"/>More on
                                                 GitHub</a></p>
                                     </div>

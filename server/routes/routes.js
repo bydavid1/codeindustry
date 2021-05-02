@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router();
 const ProjectController = require('../controllers/ProjectController')
+const SkillController = require('../controllers/SkillController')
 
 router.get('/', (req, res, next) => {
     res.send("Working")
@@ -8,4 +9,7 @@ router.get('/', (req, res, next) => {
 
 router.get('/projects', ProjectController.findAll)
 router.post('/projects/add', ProjectController.create)
+
+router.get('/skills', SkillController.findAll)
+router.post('/skills/add', SkillController.create)
 module.exports = router;
