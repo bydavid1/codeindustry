@@ -20,7 +20,6 @@ class Home extends React.Component {
         api.get('/projects')
         .then(response => {
             this.setState({projects: response.data})
-            console.error(this.state.projects)
         })
         .catch(err => {
             console.log(err)
@@ -31,7 +30,7 @@ class Home extends React.Component {
         let projects;
         if (this.state.projects.length > 0) {
              projects = this.state.projects.map(project => 
-                <Project title={project.title}
+                <Project key={project._id} title={project.title}
                 link={project.link}
                 image={"storage/images/projects/" + project.image} description={project.description} />
             )
