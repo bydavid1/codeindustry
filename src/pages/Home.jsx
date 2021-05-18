@@ -7,6 +7,7 @@ import GithubActivity from '../components/GithubActivity.jsx'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import MetaTags from 'react-meta-tags'
 import api from '../api-connection'
+import account from '../../server/models/account.js';
 
 class Home extends React.Component {
 
@@ -15,11 +16,22 @@ class Home extends React.Component {
         this.state = {
             projects: [],
             skills: [],
-            certifications: []
+            certifications: [],
+            account: {}
         }
     }
 
     componentDidMount() {
+        api.get('/account/info')
+        .then(response => {
+            this.setState({
+                account: response.data
+            })
+        })
+        .catch(err => {
+            console.log("error: " + err)
+        })
+
         api.get('/projects')
         .then(response => {
             this.setState({
@@ -60,7 +72,7 @@ render() {
                 <meta property="og:description" content="Professional info about Byron Jimenez" />
                 <meta property="og:image" content="" />
             </MetaTags>
-            <Header />
+            <Header account={this.state.account}/>
             <div className="container sections-wrapper">
                 <div className="row">
                     <div className="primary col-lg-8 col-12">
@@ -68,13 +80,7 @@ render() {
                             <div className="section-inner shadow-sm rounded">
                                 <h2 className="heading">About Me</h2>
                                 <div className="content">
-                                    <p>I'm a web and mobile developer, I have two years of programming experience. I'm
-                                        self-taught, creative, passionate about design, I seek to expand my skills daily
-                                        and
-                                        I
-                                        love challenges. I would love to be part of a dynamic and creative team where I
-                                        can
-                                        contribute with all my knowledge</p>
+                                    <p>{ this.state.account.about }</p>
                                 </div>
                             </div>
                         </section>
@@ -135,16 +141,14 @@ render() {
                                     <ul className="list-unstyled">
                                         <li>
                                             <FontAwesomeIcon icon="map-marker-alt" /><span
-                                                className="sr-only">Location:</span>El
-                                            Salvador</li>
+                                                className="sr-only">Location:</span>{ this.state.account.address }</li>
                                         <li>
                                             <FontAwesomeIcon icon="envelope" /><span className="sr-only">Email:</span><a
                                                 href="#">
-                                                byronjimenez9911@gmail.com</a></li>
+                                                { this.state.account.email }</a></li>
                                         <li>
                                             <FontAwesomeIcon icon="calendar" /><span className="sr-only">Born
-                                                Date:</span>February,
-                                            22/1999</li>
+                                                Date:</span>{ this.state.account.birthDate }</li>
                                     </ul>
                                 </div>
                             </div>

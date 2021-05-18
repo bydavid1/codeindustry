@@ -3,6 +3,8 @@ const router = express.Router();
 const ProjectController = require('../controllers/ProjectController')
 const SkillController = require('../controllers/SkillController')
 const CertificationController = require('../controllers/CertificationController')
+const AccountController = require('../controllers/AccountController')
+const DocumentController = require('../controllers/DocumentController')
 
 router.get('/', (req, res, next) => {
     res.send("Working")
@@ -16,4 +18,9 @@ router.post('/skills/add', SkillController.create)
 
 router.get('/certifications', CertificationController.findAll)
 router.post('/certifications/add', CertificationController.create)
+
+router.post('/account/register',  AccountController.register)
+router.get('/account/info',  AccountController.info)
+
+router.get('/curriculum', DocumentController.curriculum)
 module.exports = router;

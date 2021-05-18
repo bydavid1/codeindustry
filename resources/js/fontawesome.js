@@ -3,9 +3,11 @@ import {
 } from '@fortawesome/fontawesome-svg-core';
 import {
     faCodepen,
+    faFacebook,
     faGithub,
     faLinkedin,
-    faStackOverflow
+    faStackOverflow,
+    faTwitter
 } from '@fortawesome/free-brands-svg-icons';
 import {
     faCalendar,
@@ -36,4 +38,6 @@ library.add(faMapMarkerAlt,
     faGithub, 
     faStackOverflow, 
     faCodepen,
+    faFacebook,
+    faTwitter,
     faDownload)
