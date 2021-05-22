@@ -1,7 +1,7 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const RemovePlugin = require('remove-files-webpack-plugin')
 
 module.exports = {
     entry: {
@@ -57,6 +57,19 @@ module.exports = {
             template: 'blog.html',
             chunks: ['blog']
         }),
-        new CleanWebpackPlugin()
+        new RemovePlugin({
+            before: {
+                root: './public',
+                exclude: ['./storage']
+            },
+            watch: {
+                root: './public',
+                exclude: ['./storage']
+            },
+            after: {
+                root: './public',
+                exclude: ['./storage']
+            }
+        })
     ]
 }
