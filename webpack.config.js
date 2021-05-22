@@ -1,12 +1,16 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
-    entry: path.resolve(__dirname, 'src/index.js'),
+    entry: {
+        portfolio: path.resolve(__dirname, 'src/portfolio/index.js'),
+        blog: path.resolve(__dirname, 'src/blog/index.js')
+    },
     output: {
         path: path.resolve(__dirname, 'public/'),
-        filename: 'js/app.js'
+        filename: 'js/[contenthash].js'
     },
     module: {
         rules: [
@@ -40,10 +44,19 @@ module.exports = {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: 'css/[name].css'
+            filename: 'css/[name].css',
+            chunkFilename: '[id].css'
         }),
         new HtmlWebpackPlugin({
-            template: 'index.html'
-        })
+            filename: 'index.html',
+            template: 'index.html',
+            chunks: ['portfolio']
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'blog.html',
+            template: 'blog.html',
+            chunks: ['blog']
+        }),
+        new CleanWebpackPlugin()
     ]
 }

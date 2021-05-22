@@ -7,7 +7,6 @@ import GithubActivity from '../components/GithubActivity.jsx'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import MetaTags from 'react-meta-tags'
 import api from '../api-connection'
-import account from '../../server/models/account.js';
 
 class Home extends React.Component {
 

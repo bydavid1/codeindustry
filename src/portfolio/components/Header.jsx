@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import account from '../../storage/images/account.jpg'
+import account from '../../../storage/images/account.jpg'
 
 const Header = function(props) {
     return (
