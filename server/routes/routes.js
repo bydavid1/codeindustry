@@ -6,6 +6,8 @@ const CertificationController = require('../controllers/CertificationController'
 const AccountController = require('../controllers/AccountController')
 const DocumentController = require('../controllers/DocumentController')
 
+const path = require('path')
+
 router.get('/', (req, res, next) => {
     res.send("Working")
 })
@@ -23,4 +25,9 @@ router.post('/account/register',  AccountController.register)
 router.get('/account/info',  AccountController.info)
 
 router.get('/curriculum', DocumentController.curriculum)
+
+//Dont stage 
+router.get('/blog', function(req, res){
+    res.sendFile(path.join(__dirname, '../../public/blog.html'))
+})
 module.exports = router;

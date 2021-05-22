@@ -1,3 +1,7 @@
+/*=========================================================
+	Bootstrap
+===========================================================*/
+@import "bootstrap/bootstrap.scss";
 /* 
 Template Name: WebMag Html Template
 
@@ -30,7 +34,6 @@ RESPONSIVE
 /*----------------------------*\
 	typography
 \*----------------------------*/
-@import "bootstrap/bootstrap.scss";
 
 body {
     font-family: 'Nunito', sans-serif;
@@ -506,7 +509,7 @@ body {
   .nav-aside-close {
     position: absolute;
     top: 0px;
-    right: 0px;
+    left: 0px;
     height: 70px;
     width: 70px;
     line-height: 70px;

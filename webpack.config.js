@@ -60,16 +60,14 @@ module.exports = {
         new RemovePlugin({
             before: {
                 root: './public',
-                exclude: ['./storage']
+                exclude: ['./storage'],
+                include: ['./css', './js']
             },
             watch: {
                 root: './public',
-                exclude: ['./storage']
+                exclude: ['./storage'],
+                include: ['./css', './js']
             },
-            after: {
-                root: './public',
-                exclude: ['./storage']
-            }
         })
     ]
 }
