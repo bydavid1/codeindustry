@@ -65,8 +65,7 @@ module.exports = {
             },
             watch: {
                 root: './public',
-                exclude: ['./storage'],
-                include: ['./css', './js']
+                exclude: ['./storage']
             },
         })
     ]
