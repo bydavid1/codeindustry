@@ -1,7 +1,3 @@
 node_modules
-public/css
-public/js
-public/index.html
-public/blog.html
-public/storage
+public/*
 storage/

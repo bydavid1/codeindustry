@@ -10,6 +10,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'public/'),
+        publicPath: '/',
         filename: 'js/[contenthash].js'
     },
     module: {
@@ -48,12 +49,12 @@ module.exports = {
             chunkFilename: '[id].css'
         }),
         new HtmlWebpackPlugin({
-            filename: 'index.html',
-            template: 'index.html',
+            filename: 'portfolio.html',
+            template: 'portfolio.html',
             chunks: ['portfolio']
         }),
         new HtmlWebpackPlugin({
-            filename: 'blog.html',
+            filename: 'index.html',
             template: 'blog.html',
             chunks: ['blog']
         }),

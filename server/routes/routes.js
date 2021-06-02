@@ -8,10 +8,6 @@ const DocumentController = require('../controllers/DocumentController')
 
 const path = require('path')
 
-router.get('/', (req, res, next) => {
-    res.send("Working")
-})
-
 router.get('/projects', ProjectController.findAll)
 router.post('/projects/add', ProjectController.create)
 
@@ -26,8 +22,13 @@ router.get('/account/info',  AccountController.info)
 
 router.get('/curriculum', DocumentController.curriculum)
 
-//Dont stage 
-router.get('/blog', function(req, res){
-    res.sendFile(path.join(__dirname, '../../public/blog.html'))
+router.get('/portfolio', function(req, res){
+    res.sendFile(path.join(__dirname, '../../public/portfolio.html'))
 })
+
+// Dont stage 
+router.get('*', function(req, res){
+    res.sendFile(path.join(__dirname, '../../public/index.html'))
+})
+
 module.exports = router;

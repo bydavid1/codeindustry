@@ -11,8 +11,8 @@ function App() {
             <Header />
             <BrowserRouter>
                 <Switch>
-                    <Route exact path="/blog/" component={Home}/>
-                    <Route exact path="/blog/post/:slug" component={Post}/>
+                    <Route exact path="/" component={Home}/>
+                    <Route exact path="/post/:slug" component={Post}/>
                 </Switch>
             </BrowserRouter>
             <Footer/>
