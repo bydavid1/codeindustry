@@ -13,7 +13,7 @@ class Home extends React.Component {
     }
 
     componentDidMount() {
-        api.get('/posts/test')
+        api.get('/posts/home/editorsChoice')
         .then(response => {
             this.setState({
                 posts: response.data
@@ -23,7 +23,7 @@ class Home extends React.Component {
             console.error(error)
         })
 
-        api.get('/posts/recent')
+        api.get('/posts/home/recent')
         .then(response => {
             this.setState({
                 recents: response.data

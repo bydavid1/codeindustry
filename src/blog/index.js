@@ -4,6 +4,7 @@ import App from './App.jsx'
 import '../../resources/scss/blog.scss'
 import '../../resources/js/blog-fontawesome'
 
+
 ReactDOM.render(
     <App/>,
     document.getElementById('root')
