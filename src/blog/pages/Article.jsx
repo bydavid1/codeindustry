@@ -30,7 +30,7 @@ class Article extends React.Component{
     render() {
         return (
           <>
-            <div id="post-header" className="page-header">
+            <div className="page-header post-header">
               {
                 this.state.article.cover ? (
                   <>
@@ -57,7 +57,7 @@ class Article extends React.Component{
             <div className="section">
               <div className="container">
                 <div className="row">
-                  <div className="col-md-9">
+                  <div className="col-md-8">
                     <div className="section-row sticky-container">
                       <div className="main-post">
                       <ReactMarkdown>
@@ -66,7 +66,7 @@ class Article extends React.Component{
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-3">
+                  <div className="col-md-4">
                     <div className="aside-widget text-center">
                       <a href="#" style={{display: 'inline-block', margin: 'auto'}}>
                         <img className="img-responsive" src={adPlaceholder} alt=""/>

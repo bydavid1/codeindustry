@@ -500,6 +500,18 @@ body {
     padding-bottom: 60px;
     background-color: #fbfbfd;
     border-bottom: 2px solid #F4f4f9;
+
+    &.post-header {
+      padding-top: 120px;
+
+      h1 {
+        color: #FFF;
+      }
+    }
+
+    .container {
+      position: relative;
+    }
   
     .background-img {
       position: absolute;
@@ -517,23 +529,15 @@ body {
         left: 0;
         right: 0;
         bottom: 0;
-        background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(33, 38, 49, 0.3)), to(transparent));
-        background-image: linear-gradient(to top, rgba(33, 38, 49, 0.3) 0%, transparent 100%);
+        background: rgb(2,0,36);
+        background: linear-gradient(180deg, rgba(2,0,36,0) 0%, rgba(0,0,0,1) 87%);
       }
     }
-  }
-  
-  #post-header.page-header {
-    padding-top: 120px;
   }
   
   .page-header h1 {
     text-transform: capitalize;
     margin-bottom: 0px;
-  }
-  
-  #post-header.page-header h1 {
-    color: #FFF;
   }
   
   .page-header {
@@ -546,16 +550,16 @@ body {
     }
   
     .page-header-breadcrumb {
-      margin: 15px 0px;
+      margin: 10px 0px;
   
       li {
         display: inline-block;
-        font-size: 13px;
+        font-size: 15px;
         text-transform: capitalize;
         color: #a7b3c6;
   
         a {
-          font-size: 13px;
+          font-size: 15px;
           text-transform: capitalize;
           color: #a7b3c6;
           -webkit-transition: 0.2s color;

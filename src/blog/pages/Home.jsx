@@ -37,6 +37,19 @@ class Home extends React.Component {
     render() {
         return (
             <>
+                <div className="page-header">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-10">
+                                <ul className="page-header-breadcrumb">
+                                    <li><a href="index.html">Home</a></li>
+                                    <li>Recents</li>
+                                </ul>
+                                <h1>Code Industry</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                  <div className="section">
                      <div className="container">
                          <div className="row">
