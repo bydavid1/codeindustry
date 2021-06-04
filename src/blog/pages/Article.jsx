@@ -7,6 +7,9 @@ import api from '../api'
 
 import adPlaceholder from '../../../storage/static/ad-1.jpg'
 
+import PostAuthor from '../components/PostAuthor.jsx'
+import StickyShares from '../components/StickyShares.jsx';
+
 class Article extends React.Component{
 
   constructor(props) {
@@ -82,7 +85,10 @@ class Article extends React.Component{
                         {this.state.article.content}
                       </ReactMarkdown>
                       </div>
+                      <StickyShares/>
                     </div>
+                    <hr/>
+                    <PostAuthor/>
                   </div>
                   <div className="col-md-4">
                     <div className="aside-widget text-center">
