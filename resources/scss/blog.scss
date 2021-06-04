@@ -57,7 +57,6 @@ body {
   h1, h2, h3, h4, h5, h6 {
     font-family: $font-body;
     letter-spacing: normal;
-    line-height: 36px;
     font-weight: 700;
     color: #212631;
     margin: 0px 0px 15px;
@@ -273,6 +272,7 @@ body {
     .logo-theme {
       line-height: 70px;
       display: inline-block;
+      width: 150px;
   
       > img {
         width: 100%;
@@ -606,7 +606,7 @@ body {
   
     .post-meta {
       margin-top: 15px;
-      margin-bottom: 15px;
+      margin-bottom: 7px;
     }
   }
   
