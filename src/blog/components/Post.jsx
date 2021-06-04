@@ -6,7 +6,7 @@ const tempDomain = 'http://localhost:1337'
 const tempBlogPath = '/post/'
 
 const Post = (props) => {
-    const compactStyle = 
+    const thumb = 
         <div className="post post-thumb">
             <Link className="post-img" to={tempBlogPath + props.slug}><img src={tempDomain + props.cover} alt=""/></Link>
             <div className="post-body">
@@ -18,19 +18,35 @@ const Post = (props) => {
             </div>
         </div>
 
-        const defaultStyle =                                          
-            <div className="post">
-                <Link className="post-img" to={tempBlogPath + props.slug}><img src={tempDomain + props.cover} alt=""/></Link>
-                <div className="post-body">
-                    <div className="post-meta">
-                        <a className="post-category cat-4" href="#">{props.category}</a>
-                        <span className="post-date">{props.date}</span>
-                    </div>
-                    <h3 className="post-title"><Link to={tempBlogPath + props.slug}>{props.title}</Link></h3>
-                </div>
+    const widget = 
+        <div className="post post-widget">
+            <a className="post-img" href="blog-post.html"><img src={props.cover}
+                    alt="" /></a>
+            <div className="post-body">
+                <h3 className="post-title"><a href="#">{props.title}</a></h3>
             </div>
+        </div>
 
-    return props.style == 'compact' ?  compactStyle : defaultStyle;
+    const def =                                          
+        <div className="post">
+            <Link className="post-img" to={tempBlogPath + props.slug}><img src={tempDomain + props.cover} alt=""/></Link>
+            <div className="post-body">
+                <div className="post-meta">
+                    <a className="post-category cat-4" href="#">{props.category}</a>
+                    <span className="post-date">{props.date}</span>
+                </div>
+                <h3 className="post-title"><Link to={tempBlogPath + props.slug}>{props.title}</Link></h3>
+            </div>
+        </div>
+
+        switch (props.style) {
+            case 'thumb':
+                return thumb 
+            case 'widget':
+                return widget
+            default:
+                return def
+        }
 }
 
 export default Post;

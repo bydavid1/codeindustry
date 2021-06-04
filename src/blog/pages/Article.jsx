@@ -1,9 +1,14 @@
 import React from 'react'
 import { withRouter } from "react-router-dom";
 import ReactMarkdown from 'react-markdown'
+import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
+import {atomDark} from 'react-syntax-highlighter/dist/esm/styles/prism'
 import api from '../api'
 
 import adPlaceholder from '../../../storage/static/ad-1.jpg'
+
+import PostAuthor from '../components/PostAuthor.jsx'
+import StickyShares from '../components/StickyShares.jsx';
 
 class Article extends React.Component{
 
@@ -11,6 +16,22 @@ class Article extends React.Component{
     super(props)
     this.state = {
       article: {}
+    }
+    this.components = {
+      code({node, inline, className, children, ...props}) {
+        const match = /language-(\w+)/.exec(className || '')
+        return !inline && match ? (
+          <SyntaxHighlighter style={atomDark} showLineNumbers="true" language={match[1]} PreTag="div" 
+            children={String(children).replace(/\n$/, '')} {...props} />
+        ) : (
+          <code className={className} {...props} />
+        )
+      },
+      img({node, ...props}) {
+        return (
+          <img className="img-fluid" {...props}/>
+        )
+      }
     }
   }
 
@@ -30,7 +51,7 @@ class Article extends React.Component{
     render() {
         return (
           <>
-            <div id="post-header" className="page-header">
+            <div className="page-header post-header">
               {
                 this.state.article.cover ? (
                   <>
@@ -57,16 +78,19 @@ class Article extends React.Component{
             <div className="section">
               <div className="container">
                 <div className="row">
-                  <div className="col-md-9">
+                  <div className="col-md-8">
                     <div className="section-row sticky-container">
                       <div className="main-post">
-                      <ReactMarkdown>
+                      <ReactMarkdown components={this.components}>
                         {this.state.article.content}
                       </ReactMarkdown>
                       </div>
+                      <StickyShares/>
                     </div>
+                    <hr/>
+                    <PostAuthor/>
                   </div>
-                  <div className="col-md-3">
+                  <div className="col-md-4">
                     <div className="aside-widget text-center">
                       <a href="#" style={{display: 'inline-block', margin: 'auto'}}>
                         <img className="img-responsive" src={adPlaceholder} alt=""/>

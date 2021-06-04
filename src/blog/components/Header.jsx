@@ -101,7 +101,7 @@ class Header extends React.Component {
 
 					<div id="nav-aside" ref={this.navAside}>
 						<div className="section-row">
-							<ul className="nav-aside-menu">
+							<ul className="nav-aside-menu menu-style">
 								<li><a href="index.html">Home</a></li>
 								<li><a href="about.html">About Us</a></li>
 								<li><a href="#">Join Us</a></li>

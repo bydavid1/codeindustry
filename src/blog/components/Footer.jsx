@@ -53,7 +53,7 @@ const Footer = () => {
                 <h3 className="footer-title">Join our Newsletter</h3>
                 <div className="footer-newsletter">
                   <form>
-                    <input className="input" type="email" name="newsletter" placeholder="Enter your email" />
+                    <input className="form-control" type="email" name="newsletter" placeholder="Enter your email" />
                     <button className="newsletter-btn"><i className="fa fa-paper-plane" /></button>
                   </form>
                 </div>

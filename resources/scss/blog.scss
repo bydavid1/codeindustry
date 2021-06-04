@@ -15,8 +15,6 @@ Colors:
 	Dark : #212631
 	Grey : #eceef2 #a7b3c6 #fbfbfd
 
-Fonts: Nunito & Nunito-Sans
-
 Table OF Contents
 ------------------------------------
 GENERAL
@@ -31,14 +29,25 @@ RESPONSIVE
 /*=========================================================
 	GENERAL
 ===========================================================*/
+
+/*----------------------------*\
+	Variables
+\*----------------------------*/
+
+$font-body: 'Inter', sans-serif;
+
 /*----------------------------*\
 	typography
 \*----------------------------*/
 
+
 body {
-    font-family: 'Nunito', sans-serif;
+    font-family: $font-body;
     font-size: 16px;
-    font-weight: 300;
+    font-weight: 400;
+    line-height: 1.7;
+    letter-spacing: normal;
+    text-rendering: optimizeLegibility;
     color: #3d455c;
     margin: 0;
     padding: 0;
@@ -46,7 +55,8 @@ body {
   }
   
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: $font-body;
+    letter-spacing: normal;
     font-weight: 700;
     color: #212631;
     margin: 0px 0px 15px;
@@ -86,24 +96,15 @@ body {
   
   ul, ol {
     margin: 0;
+  }
+  
+  ul.menu-style, ol.menu-style {
     padding: 0;
-    list-style: none;
+    list-style-type: none;
   }
   
-  ul.list-style, ol.list-style {
-    padding-left: 15px;
-    margin-bottom: 10px;
-  }
   
-  ul.list-style {
-    list-style-type: disc;
-  }
-  
-  ol.list-style {
-    list-style-type: decimal;
-  }
-  
-  blockquote.blockquote {
+  blockquote {
     position: relative;
     border-left: 0;
     font-weight: 600;
@@ -112,7 +113,7 @@ body {
   
     &:before {
       content: "``";
-      font-family: 'Nunito Sans', sans-serif;
+      font-family: $font-body;
       display: block;
       position: absolute;
       left: -5px;
@@ -125,48 +126,13 @@ body {
     }
   }
   
-  figure.figure-img {
+  figure {
     margin-bottom: 20px;
   
     figcaption {
       padding-top: 5px;
       font-size: 13px;
       font-weight: 600;
-    }
-  }
-  
-  .input {
-    height: 40px;
-    border: 2px solid #eceef2;
-    width: 100%;
-    padding: 0px 15px;
-    -webkit-transition: 0.2s border;
-    transition: 0.2s border;
-  
-    &:focus {
-      border-color: #3d455c;
-    }
-  }
-  
-  textarea.input {
-    height: 90px;
-    padding: 15px;
-  }
-  
-  .primary-button {
-    padding: 9px 45px;
-    border: none;
-    background-color: #212631;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 13px;
-    color: #fff;
-    -webkit-transition: 0.2s opacity;
-    transition: 0.2s opacity;
-  
-    &:hover, &:focus {
-      color: #fff;
-      opacity: 0.9;
     }
   }
   
@@ -306,6 +272,7 @@ body {
     .logo-theme {
       line-height: 70px;
       display: inline-block;
+      width: 150px;
   
       > img {
         width: 100%;
@@ -479,7 +446,7 @@ body {
   }
   
   .nav-aside-menu li a {
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: $font-body;
     font-weight: 700;
     font-size: 23px;
   }
@@ -533,6 +500,18 @@ body {
     padding-bottom: 60px;
     background-color: #fbfbfd;
     border-bottom: 2px solid #F4f4f9;
+
+    &.post-header {
+      padding-top: 120px;
+
+      h1 {
+        color: #FFF;
+      }
+    }
+
+    .container {
+      position: relative;
+    }
   
     .background-img {
       position: absolute;
@@ -550,23 +529,15 @@ body {
         left: 0;
         right: 0;
         bottom: 0;
-        background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(33, 38, 49, 0.3)), to(transparent));
-        background-image: linear-gradient(to top, rgba(33, 38, 49, 0.3) 0%, transparent 100%);
+        background: rgb(2,0,36);
+        background: linear-gradient(180deg, rgba(2,0,36,0) 0%, rgba(0,0,0,1) 87%);
       }
     }
-  }
-  
-  #post-header.page-header {
-    padding-top: 120px;
   }
   
   .page-header h1 {
     text-transform: capitalize;
     margin-bottom: 0px;
-  }
-  
-  #post-header.page-header h1 {
-    color: #FFF;
   }
   
   .page-header {
@@ -579,16 +550,16 @@ body {
     }
   
     .page-header-breadcrumb {
-      margin: 15px 0px;
+      margin: 10px 0px;
   
       li {
         display: inline-block;
-        font-size: 13px;
+        font-size: 15px;
         text-transform: capitalize;
         color: #a7b3c6;
   
         a {
-          font-size: 13px;
+          font-size: 15px;
           text-transform: capitalize;
           color: #a7b3c6;
           -webkit-transition: 0.2s color;
@@ -635,7 +606,7 @@ body {
   
     .post-meta {
       margin-top: 15px;
-      margin-bottom: 15px;
+      margin-bottom: 7px;
     }
   }
   
@@ -830,6 +801,10 @@ body {
       -ms-transform: scale(1.3);
       transform: scale(1.3);
     }
+
+    &.share-button {
+      border-color: #ff8700;
+    }
   
     &.share-facebook:hover {
       color: #3b5998;
@@ -839,16 +814,6 @@ body {
     &.share-twitter:hover {
       color: #55acee;
       border-color: #55acee;
-    }
-  
-    &.share-google-plus:hover {
-      color: #dd4b39;
-      border-color: #dd4b39;
-    }
-  
-    &.share-pinterest:hover {
-      color: #ff0000;
-      border-color: #ff0000;
     }
   
     &.share-linkedin:hover {
@@ -862,17 +827,24 @@ body {
   \*----------------------------*/
   
   .post-author {
+    margin-top: 2rem;
+    .media {
+      display: flex;
+      align-items: flex-start;
+    }
+
     .media .media-left {
-      padding-right: 40px;
+      padding-right: 20px;
   
       .media-object {
-        width: 120px;
+        width: 90px;
         border-radius: 50%;
       }
     }
   
     .author-social {
       margin-top: 15px;
+      padding-left: 0rem;
   
       li {
         display: inline-block;
@@ -946,131 +918,6 @@ body {
     }
   }
   
-  /*=========================================================
-      Aside
-  ===========================================================*/
-  
-  .aside-widget {
-    margin-bottom: 40px;
-  }
-  
-  /*----------------------------*\
-      category
-  \*----------------------------*/
-  
-  .category-widget ul li {
-    display: block;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eceef2;
-  
-    + li {
-      margin-top: 10px;
-    }
-  
-    > a {
-      display: block;
-      -webkit-transition: 0.2s color;
-      transition: 0.2s color;
-  
-      > span {
-        float: right;
-        color: #fff;
-        background-color: #212631;
-        padding: 0px 5px;
-        font-weight: 600;
-        border-radius: 2px;
-      }
-  
-      &.cat-1 > span {
-        background-color: #4BB92F;
-      }
-  
-      &.cat-2 > span {
-        background-color: #ff8700;
-      }
-  
-      &.cat-3 > span {
-        background-color: #8d00ff;
-      }
-  
-      &.cat-4 > span {
-        background-color: #0078ff;
-      }
-  
-      &:hover, &:focus {
-        text-decoration: none;
-      }
-  
-      &.cat-1 {
-        &:hover, &:focus {
-          color: #4BB92F;
-        }
-      }
-  
-      &.cat-2 {
-        &:hover, &:focus {
-          color: #ff8700;
-        }
-      }
-  
-      &.cat-3 {
-        &:hover, &:focus {
-          color: #0078ff;
-        }
-      }
-  
-      &.cat-4 {
-        &:hover, &:focus {
-          color: #8d00ff;
-        }
-      }
-    }
-  }
-  
-  /*----------------------------*\
-      tags
-  \*----------------------------*/
-  
-  .tags-widget ul li {
-    display: inline-block;
-    margin-right: 3px;
-    margin-bottom: 5px;
-  
-    a {
-      display: block;
-      color: #fff;
-      background-color: #212631;
-      padding: 3px 10px;
-      font-weight: 600;
-      border-radius: 2px;
-      -webkit-transition: 0.2s opacity;
-      transition: 0.2s opacity;
-  
-      &:hover, &:focus {
-        opacity: 0.9;
-        color: #fff;
-        text-decoration: none;
-      }
-    }
-  }
-  
-  /*----------------------------*\
-      archive
-  \*----------------------------*/
-  
-  .archive-widget ul li {
-    display: block;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eceef2;
-  
-    + li {
-      margin-top: 10px;
-    }
-  
-    > a {
-      display: block;
-    }
-  }
   
   /*=========================================================
       FOOTER
