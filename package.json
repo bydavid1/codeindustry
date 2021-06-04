@@ -35,7 +35,8 @@
     "react-github-activity": "^1.0.2",
     "react-markdown": "^6.0.2",
     "react-meta-tags": "^1.0.1",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "react-syntax-highlighter": "^15.4.3"
   },
   "devDependencies": {
     "@babel/core": "7.12.13",

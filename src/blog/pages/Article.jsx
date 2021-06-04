@@ -1,6 +1,8 @@
 import React from 'react'
 import { withRouter } from "react-router-dom";
 import ReactMarkdown from 'react-markdown'
+import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
+import {atomDark} from 'react-syntax-highlighter/dist/esm/styles/prism'
 import api from '../api'
 
 import adPlaceholder from '../../../storage/static/ad-1.jpg'
@@ -11,6 +13,22 @@ class Article extends React.Component{
     super(props)
     this.state = {
       article: {}
+    }
+    this.components = {
+      code({node, inline, className, children, ...props}) {
+        const match = /language-(\w+)/.exec(className || '')
+        return !inline && match ? (
+          <SyntaxHighlighter style={atomDark} showLineNumbers="true" language={match[1]} PreTag="div" 
+            children={String(children).replace(/\n$/, '')} {...props} />
+        ) : (
+          <code className={className} {...props} />
+        )
+      },
+      img({node, ...props}) {
+        return (
+          <img className="img-fluid" {...props}/>
+        )
+      }
     }
   }
 
@@ -60,7 +78,7 @@ class Article extends React.Component{
                   <div className="col-md-8">
                     <div className="section-row sticky-container">
                       <div className="main-post">
-                      <ReactMarkdown>
+                      <ReactMarkdown components={this.components}>
                         {this.state.article.content}
                       </ReactMarkdown>
                       </div>
