@@ -62,7 +62,7 @@ class Home extends React.Component {
                                 this.state.posts.length > 0 ? (
                                     this.state.posts.flatMap(post => 
                                         <div key={post._id} className="col-md-6">
-                                            <Post style="compact" title={post.title} cover={post.cover.url} slug={post.slug} date={post.date}
+                                            <Post style="thumb" title={post.title} cover={post.cover.url} slug={post.slug} date={post.date}
                                              category={post.category.title}/>
                                         </div>
                                     )
