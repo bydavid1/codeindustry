@@ -14,8 +14,17 @@ class PostBody extends React.Component {
         this.sharesContainer = React.createRef();
 
         //bind functions
-        this.setStickyValues = this.setStickyValues.bind(this)
-        this.setBehavior = this.setBehavior.bind(this)
+        // this.setStickyValues = this.setStickyValues.bind(this)
+        // this.setBehavior = this.setBehavior.bind(this)
+
+        this.state = {
+            buttonsHeight: 0,
+            buttonsTop: 0,
+            containerTop: 0,
+            containerLeft: 0,
+            containerHeight: 0,
+            containerBottom: 0
+        }
 
         //Components for react markdown
         this.components = {
@@ -37,41 +46,48 @@ class PostBody extends React.Component {
     }
 
     componentDidMount() {
-        this.sharesHeight = this.stickyShares.current.clientHeight
         this.offsetTop = 80;
-        this.setStickyValues()
-
-        window.addEventListener('scroll', (e) => {
-            this.setBehavior(e.target.scrollingElement.scrollTop)
-        })
-
-        window.addEventListener('resize', (e) => {
+        setTimeout(() => {
             this.setStickyValues()
-            this.setBehavior(e.target.scrollingElement.scrollTop)
-        })
+
+            window.addEventListener('scroll', (e) => {
+                this.setBehavior(e.target.scrollingElement.scrollTop)
+            })
+    
+            window.addEventListener('resize', (e) => {
+                this.setStickyValues()
+                this.setBehavior(e.target.scrollingElement.scrollTop)
+            })
+        }, 1000);
     }
 
     setStickyValues() {
-        this.stickySharesTop = this.stickyShares.current.offsetTop
-        this.sharesContainerTop = this.sharesContainer.current.offsetTop
-        this.sharesContainerLeft = this.sharesContainer.current.offsetLeft
-        this.sharesContainerHeight = this.sharesContainer.current.clientHeight
-        this.sharesContainerBottom = this.sharesContainerHeight + this.sharesContainerTop
+        this.setState({
+            buttonsHeight: this.stickyShares.current.offsetHeight,
+            buttonsTop: this.stickyShares.current.getBoundingClientRect().top,
+            containerTop: this.sharesContainer.current.getBoundingClientRect().top,
+            containerLeft: this.sharesContainer.current.getBoundingClientRect().left,
+            containerHeight: this.sharesContainer.current.offsetHeight
+        })
+
+        this.setState({
+            containerBottom: this.state.containerHeight + this.state.containerTop
+        })
     }
 
     setBehavior(wScroll) {
-        if (this.sharesContainerBottom - this.sharesHeight - this.offsetTop < wScroll) {
-            this.stickyShares.current.style.position = "absolute"
-            this.stickyShares.current.style.top = this.sharesContainerHeight - this.sharesHeight
-            this.stickyShares.current.style.left = 0
-        } else if (this.stickySharesTop < wScroll + this.offsetTop) {
-            this.stickyShares.current.style.position = "fixed"
-            this.stickyShares.current.style.top = this.offsetTop
-            this.stickyShares.current.style.left = this.sharesContainerLeft
+        if (this.state.containerBottom - this.state.buttonsHeight - this.offsetTop < wScroll) {
+            this.stickyShares.current.style.position = "absolute";
+            this.stickyShares.current.style.top = `${this.state.containerHeight - this.state.buttonsHeight}px`;
+            this.stickyShares.current.style.left = 0;
+        } else if (this.state.buttonsTop < wScroll + this.offsetTop) {
+            this.stickyShares.current.style.position = "fixed";
+            this.stickyShares.current.style.top = `${this.offsetTop}px`;
+            this.stickyShares.current.style.left = `${this.state.containerLeft}px`;
         } else {
-            this.stickyShares.current.style.position = "absolute"
-            this.stickyShares.current.style.top = 0
-            this.stickyShares.current.style.left = 0
+            this.stickyShares.current.style.position = "absolute";
+            this.stickyShares.current.style.top = 0;
+            this.stickyShares.current.style.left = 0;
         }
     }
 
