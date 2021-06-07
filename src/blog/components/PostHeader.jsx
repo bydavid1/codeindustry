@@ -8,7 +8,7 @@ const PostHeader = (props) => {
                 <div className="row">
                 <div className="col-md-10">
                     <div className="post-meta">
-                    <a className="post-category cat-2" href="category.html">JavaScript</a>
+                    <a className="post-category cat-2" href="category.html">{props.category}</a>
                     <span className="post-date">{props.date}</span>
                     </div>
                     <h1>{props.title}</h1>

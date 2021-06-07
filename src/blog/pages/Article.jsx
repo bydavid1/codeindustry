@@ -32,36 +32,37 @@ class Article extends React.Component{
     render() {
         return (
           <>
-            <div className="page-header post-header">
-              {
-                this.state.article.cover ? (
-                  <>
+            {
+              Object.keys(this.state.article).length > 0 ? (
+                <>
+                  <div className="page-header post-header">
                     <PostHeader cover={this.state.article.cover.url} date={this.state.article.date}
-                      title={this.state.article.title}/>
-                  </>
-                ) : (
-                    <Loader/>
-                )
-              }
-            </div>
-            <div className="section">
-              <div className="container">
-                <div className="row">
-                  <div className="col-md-8">
-                    <PostBody content={this.state.article.content}/>
-                    <hr/>
-                    <PostAuthor/>
+                      title={this.state.article.title} category={this.state.article.category.title} />
                   </div>
-                  <div className="col-md-4">
-                    <div className="aside-widget text-center">
-                      <a href="#" style={{display: 'inline-block', margin: 'auto'}}>
-                        <img className="img-responsive" src={adPlaceholder} alt=""/>
-                      </a>
+                  <div className="section">
+                    <div className="container">
+                      <div className="row">
+                        <div className="col-md-8">
+                          <PostBody content={this.state.article.content} />
+                          <hr />
+                          <PostAuthor firstname={this.state.article.admin_user.firstname}
+                            lastname={this.state.article.admin_user.lastname} />
+                        </div>
+                        <div className="col-md-4">
+                          <div className="aside-widget text-center">
+                            <a href="#" style={{display: 'inline-block', margin: 'auto'}}>
+                              <img className="img-responsive" src={adPlaceholder} alt="" />
+                            </a>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
+                </>
+              ) : (
+                  <Loader/>
+              )
+            }
           </>    
         );
     }
