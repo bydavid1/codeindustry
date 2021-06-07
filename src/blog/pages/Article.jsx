@@ -1,14 +1,11 @@
 import React from 'react'
 import { withRouter } from "react-router-dom";
-import ReactMarkdown from 'react-markdown'
-import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
-import {atomDark} from 'react-syntax-highlighter/dist/esm/styles/prism'
 import api from '../api'
-
 import adPlaceholder from '../../../storage/static/ad-1.jpg'
-
 import PostAuthor from '../components/PostAuthor.jsx'
-import StickyShares from '../components/StickyShares.jsx';
+import PostBody from '../components/PostBody.jsx';
+import PostHeader from '../components/PostHeader.jsx';
+import Loader from '../components/Loader.jsx';
 
 class Article extends React.Component{
 
@@ -16,22 +13,6 @@ class Article extends React.Component{
     super(props)
     this.state = {
       article: {}
-    }
-    this.components = {
-      code({node, inline, className, children, ...props}) {
-        const match = /language-(\w+)/.exec(className || '')
-        return !inline && match ? (
-          <SyntaxHighlighter style={atomDark} showLineNumbers="true" language={match[1]} PreTag="div" 
-            children={String(children).replace(/\n$/, '')} {...props} />
-        ) : (
-          <code className={className} {...props} />
-        )
-      },
-      img({node, ...props}) {
-        return (
-          <img className="img-fluid" {...props}/>
-        )
-      }
     }
   }
 
@@ -55,23 +36,11 @@ class Article extends React.Component{
               {
                 this.state.article.cover ? (
                   <>
-                    <div className="background-img" style={{backgroundImage: 'url(http://localhost:1337' + this.state.article.cover.url +')'}}></div>
-                    <div className="container">
-                      <div className="row">
-                        <div className="col-md-10">
-                          <div className="post-meta">
-                            <a className="post-category cat-2" href="category.html">JavaScript</a>
-                            <span className="post-date">{this.state.article.date}</span>
-                          </div>
-                          <h1>{this.state.article.title}</h1>
-                        </div>
-                      </div>
-                    </div>
+                    <PostHeader cover={this.state.article.cover.url} date={this.state.article.date}
+                      title={this.state.article.title}/>
                   </>
                 ) : (
-                  <div className="spinner-grow text-primary" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                  </div>
+                    <Loader/>
                 )
               }
             </div>
@@ -79,14 +48,7 @@ class Article extends React.Component{
               <div className="container">
                 <div className="row">
                   <div className="col-md-8">
-                    <div className="section-row sticky-container">
-                      <div className="main-post">
-                      <ReactMarkdown components={this.components}>
-                        {this.state.article.content}
-                      </ReactMarkdown>
-                      </div>
-                      <StickyShares/>
-                    </div>
+                    <PostBody content={this.state.article.content}/>
                     <hr/>
                     <PostAuthor/>
                   </div>
