@@ -13,10 +13,6 @@ class PostBody extends React.Component {
         this.stickyShares = React.createRef();
         this.sharesContainer = React.createRef();
 
-        //bind functions
-        // this.setStickyValues = this.setStickyValues.bind(this)
-        // this.setBehavior = this.setBehavior.bind(this)
-
         this.state = {
             buttonsHeight: 0,
             buttonsTop: 0,
@@ -50,15 +46,24 @@ class PostBody extends React.Component {
         setTimeout(() => {
             this.setStickyValues()
 
-            window.addEventListener('scroll', (e) => {
-                this.setBehavior(e.target.scrollingElement.scrollTop)
-            })
-    
-            window.addEventListener('resize', (e) => {
-                this.setStickyValues()
-                this.setBehavior(e.target.scrollingElement.scrollTop)
-            })
+            window.addEventListener('scroll', this.onStart)
+            window.addEventListener('resize', this.onResize)
+
         }, 1000);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.onStart)
+		window.removeEventListener('resize', this.onResize)
+    }
+
+    onResize = () => {
+        this.setBehavior()
+    }
+
+    onStart = () => {
+        this.setStickyValues()
+        this.setBehavior()
     }
 
     setStickyValues() {
@@ -75,7 +80,8 @@ class PostBody extends React.Component {
         })
     }
 
-    setBehavior(wScroll) {
+    setBehavior() {
+        let wScroll = document.scrollingElement.scrollTop
         if (this.state.containerBottom - this.state.buttonsHeight - this.offsetTop < wScroll) {
             this.stickyShares.current.style.position = "absolute";
             this.stickyShares.current.style.top = `${this.state.containerHeight - this.state.buttonsHeight}px`;
