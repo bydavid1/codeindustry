@@ -69,17 +69,11 @@ class Header extends React.Component {
 								<li>
 									<Link to="/">Home</Link>
 								</li>
-								<li className="cat-1">
-									<a href="#">Web Design</a>
+								<li>
+									<Link to="/about">Información</Link>
 								</li>
-								<li className="cat-2">
-									<a href="#">JavaScript</a>
-								</li>
-								<li className="cat-3">
-									<a href="#">Css</a>
-								</li>
-								<li className="cat-4">
-									<a href="#">Jquery</a>
+								<li>
+									<Link to="/">Contacto</Link>
 								</li>
 							</ul>
 
