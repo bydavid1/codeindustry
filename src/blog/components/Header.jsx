@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import logo from '../../../storage/static/logo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -60,16 +61,13 @@ class Header extends React.Component {
 				<div id="navbar-theme" ref={this.navbarTheme}>
 					<div className="navbar navbar-expand-lg py-0" id="navbar-fixed" ref={this.navbarFixed}>
 						<div className="container">
-							<a className="navbar-brand nav-logo-theme" href="#">
+							<Link className="navbar-brand nav-logo-theme" to="/">
 								<img className="logo-theme" src={logo} alt="" />
-							</a>
+							</Link>
 
 							<ul className="navbar navbar-nav nav menu-theme">
 								<li>
-									<a href="#">Home</a>
-								</li>
-								<li>
-									<a href="#">Popular</a>
+									<Link to="/">Home</Link>
 								</li>
 								<li className="cat-1">
 									<a href="#">Web Design</a>

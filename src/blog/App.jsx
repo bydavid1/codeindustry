@@ -9,15 +9,17 @@ import Footer from './components/Footer.jsx'
 function App() {
     return (
         <>
-            <Header />
+
             <BrowserRouter>
-                <Switch>
-                    <Route exact path="/" component={Home}/>
-                    <Route exact path="/post/:slug" component={Article}/>
-                    <Route exact path="/category/:slug" component={Category}/>
-                </Switch>
+                <Header />
+                    <Switch>
+                        <Route exact path="/" component={Home}/>
+                        <Route exact path="/post/:slug" component={Article}/>
+                        <Route exact path="/category/:slug" component={Category}/>
+                    </Switch>
+                <Footer/>
             </BrowserRouter>
-            <Footer/>
+
         </>
     )
 }
