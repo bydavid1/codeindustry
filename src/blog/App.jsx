@@ -4,6 +4,7 @@ import Home from './pages/Home.jsx'
 import Article from './pages/Article.jsx'
 import Category from './pages/Category.jsx'
 import About from './pages/About.jsx'
+import Contact from './pages/Contact.jsx'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
 
@@ -18,6 +19,7 @@ function App() {
                         <Route exact path="/post/:slug" component={Article}/>
                         <Route exact path="/category/:slug" component={Category}/>
                         <Route exact path="/about" component={About}/>
+                        <Route exact path="/contact" component={Contact}/>
                     </Switch>
                 <Footer/>
             </BrowserRouter>

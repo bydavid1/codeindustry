@@ -551,6 +551,7 @@ body {
   
     .page-header-breadcrumb {
       margin: 10px 0px;
+      padding-left: 0px;
   
       li {
         display: inline-block;
@@ -952,10 +953,14 @@ body {
     margin-bottom: 40px;
   }
   
-  .footer-nav li {
-    display: inline-block;
-    margin-right: 15px;
-  }
+  .footer-nav{
+    padding-left: 0px;
+
+      li {
+        display: inline-block;
+        margin-right: 15px;
+      }
+  } 
   
   .footer-links li + li {
     margin-top: 5px;

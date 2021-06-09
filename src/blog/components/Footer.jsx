@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
     return (
@@ -17,9 +18,9 @@ const Footer = () => {
                   <li><a href="#">Advertisement</a></li>
                 </ul>
                 <div className="footer-copyright">
-                  <span>© {/* Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. */}
-                    Copyright © All rights reserved | This template is made with <i className="fa fa-heart-o" aria-hidden="true" /> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                    {/* Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. */}</span>
+                  <span>© 
+                    Copyright © All rights reserved
+                    </span>
                 </div>
               </div>
             </div>
@@ -27,11 +28,17 @@ const Footer = () => {
               <div className="row">
                 <div className="col-md-6">
                   <div className="footer-widget">
-                    <h3 className="footer-title">About Us</h3>
+                    <h3 className="footer-title">Menu</h3>
                     <ul className="footer-links">
-                      <li><a href="about.html">About Us</a></li>
-                      <li><a href="#">Join Us</a></li>
-                      <li><a href="contact.html">Contacts</a></li>
+                    <li>
+                      <Link to="/">Inicio</Link>
+                    </li>
+                    <li>
+                      <Link to="/about">Información</Link>
+                    </li>
+                    <li>
+                      <Link to="/contact">Contacto</Link>
+                    </li>
                     </ul>
                   </div>
                 </div>
@@ -39,10 +46,7 @@ const Footer = () => {
                   <div className="footer-widget">
                     <h3 className="footer-title">Catagories</h3>
                     <ul className="footer-links">
-                      <li><a href="category.html">Web Design</a></li>
-                      <li><a href="category.html">JavaScript</a></li>
-                      <li><a href="category.html">Css</a></li>
-                      <li><a href="category.html">Jquery</a></li>
+                      {/* <li><a href="category.html">Web Design</a></li> */}
                     </ul>
                   </div>
                 </div>
