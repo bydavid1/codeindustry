@@ -1,6 +1,8 @@
 import React from 'react'
 import api from '../api'
 import Post from '../components/Post.jsx'
+import Loader from '../components/Loader.jsx';
+import MetaTags from 'react-meta-tags';
 
 class Home extends React.Component {
 
@@ -8,7 +10,8 @@ class Home extends React.Component {
         super(props)
         this.state = {
             posts: [],
-            recents: []
+            recents: [],
+            home: {}
         }
     }
 
@@ -32,18 +35,44 @@ class Home extends React.Component {
         .catch(error => {
             console.error(error)
         })
+
+        api.get('/home-page')
+        .then(response => {
+            this.setState({
+                home: response.data
+            })
+        })
+        .catch(error => {
+            console.error(error)
+        })
     }
 
     render() {
         return (
             <>
+                <MetaTags>
+                    <title>{ this.state.home.title }</title>
+                    <meta name="description" content={ this.state.home.extract } /> 
+
+                    {/* og meta */}
+                    <meta property="og:title" content={ this.state.home.title }  />
+                    <meta property="og:description" content={ this.state.home.extract } />
+                    <meta property="og:image" content={ this.state.home.image ? this.state.home.image.url : ''}  />
+                    <meta property="og:url" content={this.state.home.url}/>
+                    <meta property="og:type" content={this.state.home.website}/>
+                    {/* twitter meta */}
+                    <meta name="twitter:card" content="summary_large_image"/>
+                    <meta property="twitter:url" content={this.state.home.url}/>
+                    <meta name="twitter:title" content={ this.state.home.title }/>
+                    <meta name="twitter:description" content={ this.state.home.extract }/>
+                    <meta name="twitter:image" content={ this.state.home.image ? this.state.home.image.url : ''}/>
+                </MetaTags>
                 <div className="page-header">
                     <div className="container">
                         <div className="row">
                             <div className="col-md-10">
                                 <ul className="page-header-breadcrumb">
-                                    <li><a href="index.html">Home</a></li>
-                                    <li>Recents</li>
+                                    <li><a href="index.html">{this.state.home.title}</a></li>
                                 </ul>
                                 <h1>Code Industry</h1>
                             </div>
@@ -67,9 +96,7 @@ class Home extends React.Component {
                                         </div>
                                     )
                                 ) : (
-                                    <div className="col-md-12">
-                                        <h3>No items</h3>
-                                    </div>
+                                    <Loader/>  
                                 )
                             }
                          </div>
@@ -89,9 +116,7 @@ class Home extends React.Component {
                                         </div>
                                     )
                                 ) : (
-                                    <div className="col-md-12">
-                                        <h3>No items</h3>
-                                    </div>
+                                    <Loader/>  
                                 )
                             }
                          </div>

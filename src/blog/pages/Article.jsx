@@ -6,6 +6,7 @@ import PostAuthor from '../components/PostAuthor.jsx'
 import PostBody from '../components/PostBody.jsx';
 import PostHeader from '../components/PostHeader.jsx';
 import Loader from '../components/Loader.jsx';
+import MetaTags from 'react-meta-tags';
 
 class Article extends React.Component{
 
@@ -32,12 +33,29 @@ class Article extends React.Component{
     render() {
         return (
           <>
+            <MetaTags>
+              <title>{ this.state.article.title }</title>
+              <meta name="description" content={ this.state.article.content ? this.state.article.content.slice(0, 150) : ''  } /> 
+
+              {/* og meta */}
+              <meta property="og:title" content={ this.state.article.title }  />
+              <meta property="og:description" content={ this.state.article.content ? this.state.article.content.slice(0, 150) : '' } />
+              <meta property="og:image" content={ this.state.article.cover ? this.state.article.cover.url : ''}  />
+              <meta property="og:url" content={window.location.href}/>
+              <meta property="og:type" content="article"/>
+              {/* twitter meta */}
+              <meta name="twitter:card" content="summary_large_image"/>
+              <meta property="twitter:url" content={window.location.href}/>
+              <meta name="twitter:title" content={ this.state.article.title }/>
+              <meta name="twitter:description" content={ this.state.article.content ? this.state.article.content.slice(0, 150) : ''  }/>
+              <meta name="twitter:image" content={ this.state.article.cover ? this.state.article.cover.url : ''}/>
+            </MetaTags>
             {
               Object.keys(this.state.article).length > 0 ? (
                 <>
                   <div className="page-header post-header">
                     <PostHeader cover={this.state.article.cover.url} date={this.state.article.date}
-                      title={this.state.article.title} category={this.state.article.category.title} />
+                      title={this.state.article.title} category={this.state.article.category.title} categorySlug={this.state.article.category.slug} />
                   </div>
                   <div className="section">
                     <div className="container">

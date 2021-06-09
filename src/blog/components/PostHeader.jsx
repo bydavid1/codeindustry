@@ -1,4 +1,5 @@
 import React from  'react'
+import { Link } from 'react-router-dom'
 
 const PostHeader = (props) => {
     return (
@@ -8,7 +9,7 @@ const PostHeader = (props) => {
                 <div className="row">
                 <div className="col-md-10">
                     <div className="post-meta">
-                    <a className="post-category cat-2" href="category.html">{props.category}</a>
+                    <Link className="post-category cat-2" to={'/category/' + props.categorySlug}>{props.category}</Link>
                     <span className="post-date">{props.date}</span>
                     </div>
                     <h1>{props.title}</h1>

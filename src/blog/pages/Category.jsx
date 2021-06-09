@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import api from '../api'
 import adPlaceholder from '../../../storage/static/ad-1.jpg'
 import Post from '../components/Post.jsx'
+import Loader from '../components/Loader.jsx';
+import MetaTags from 'react-meta-tags';
 
 class Category extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
+            category: {},
             posts: {}
         }
     }
@@ -18,7 +21,8 @@ class Category extends Component {
         api.get('/posts/category/' + slug)
         .then(response => {
             this.setState({
-                posts: response.data
+                category: response.data.category,
+                posts: response.data.posts
             })
         })
 
@@ -27,6 +31,23 @@ class Category extends Component {
     render() {
         return (
             <>
+                <MetaTags>
+                    <title>{ this.state.category.title }</title>
+                    <meta name="description" content={ this.state.category.description } /> 
+
+                    {/* og meta */}
+                    <meta property="og:title" content={ this.state.category.title }  />
+                    <meta property="og:description" content={ this.state.category.description } />
+                    <meta property="og:image" content={ this.state.category.cover ? this.state.category.cover.url : ''}  />
+                    <meta property="og:url" content={window.location.href}/>
+                    <meta property="og:type" content="website"/>
+                    {/* twitter meta */}
+                    <meta name="twitter:card" content="summary_large_image"/>
+                    <meta property="twitter:url" content={window.location.href}/>
+                    <meta name="twitter:title" content={ this.state.category.title }/>
+                    <meta name="twitter:description" content={ this.state.category.description }/>
+                    <meta name="twitter:image" content={ this.state.category.cover ? this.state.category.cover.url : ''}/>
+                </MetaTags>
                 <div className="page-header">
                     <div className="container">
                         <div className="row">
@@ -35,7 +56,7 @@ class Category extends Component {
                                     <li><a href="index.html">Home</a></li>
                                     <li>Category</li>
                                 </ul>
-                                <h1>Code Industry</h1>
+                                <h1>{this.state.category.title}</h1>
                             </div>
                         </div>
                     </div>
@@ -50,13 +71,11 @@ class Category extends Component {
                                         this.state.posts.flatMap(post => 
                                             <div key={post._id} className="col-md-6">
                                             <Post style="thumb" title={post.title} cover={post.cover.url} date={post.date}
-                                             category={post.category.title} postSlug={post.slug} categorySlug={post.category.slug}/>
+                                             category={this.state.category.title} postSlug={post.slug} categorySlug={this.state.category.slug}/>
                                             </div>
                                         )
                                         ) : (
-                                            <div className="col-md-12">
-                                                <h3>No items</h3>
-                                            </div>
+                                            <Loader/>   
                                         )
                                     }
                                 </div>
