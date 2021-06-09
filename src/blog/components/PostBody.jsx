@@ -58,11 +58,11 @@ class PostBody extends React.Component {
     }
 
     onResize = () => {
+        this.setStickyValues()
         this.setBehavior()
     }
 
     onStart = () => {
-        this.setStickyValues()
         this.setBehavior()
     }
 
