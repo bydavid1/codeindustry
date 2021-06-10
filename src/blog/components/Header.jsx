@@ -66,15 +66,13 @@ class Header extends React.Component {
 							</Link>
 
 							<ul className="navbar navbar-nav nav menu-theme">
-								<li>
-									<Link to="/">Inicio</Link>
-								</li>
-								<li>
-									<Link to="/about">Información</Link>
-								</li>
-								<li>
-									<Link to="/contact">Contacto</Link>
-								</li>
+								{
+									this.props.menu.map((item, index) => 
+										<li key={index}>
+											<Link to={item.link}>{item.name}</Link>
+										</li>
+									)
+								}
 							</ul>
 
 							<div className="nav-btns">
@@ -94,15 +92,13 @@ class Header extends React.Component {
 					<div id="nav-aside" ref={this.navAside}>
 						<div className="section-row">
 							<ul className="nav-aside-menu menu-style">
-								<li>
-									<Link to="/">Inicio</Link>
-								</li>
-								<li>
-									<Link to="/about">Información</Link>
-								</li>
-								<li>
-									<Link to="/contact">Contacto</Link>
-								</li>
+								{
+									this.props.menu.map((item, index) => 
+										<li key={index}>
+											<Link to={item.link}>{item.name}</Link>
+										</li>
+									)
+								}
 							</ul>
 						</div>
 

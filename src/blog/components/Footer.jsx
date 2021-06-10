@@ -4,7 +4,7 @@ import { EmailShareButton, FacebookShareButton, LinkedinShareButton, TwitterShar
 import { Link } from 'react-router-dom'
 import logo from '../../../storage/static/logo.png'
 
-const Footer = () => {
+const Footer = (props) => {
   const url = window.location.href
     return (
         <footer id="footer">
@@ -34,15 +34,13 @@ const Footer = () => {
                   <div className="footer-widget">
                     <h3 className="footer-title">Menu</h3>
                     <ul className="footer-links">
-                    <li>
-                      <Link to="/">Inicio</Link>
-                    </li>
-                    <li>
-                      <Link to="/about">Información</Link>
-                    </li>
-                    <li>
-                      <Link to="/contact">Contacto</Link>
-                    </li>
+                      {
+                        props.menu.map((item, index) => 
+                          <li key={index}>
+                            <Link to={item.link}>{item.name}</Link>
+                          </li>
+                        )
+                      }
                     </ul>
                   </div>
                 </div>
