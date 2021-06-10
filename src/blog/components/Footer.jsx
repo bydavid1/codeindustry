@@ -18,13 +18,16 @@ const Footer = (props) => {
                   <a href="index.html" className="logo"><img src={logo} alt="" /></a>
                 </div>
                 <ul className="footer-nav">
-                  <li><a href="#">Privacy Policy</a></li>
-                  <li><a href="#">Advertisement</a></li>
+                  <li><Link to='/about'>Informacion</Link></li>
                 </ul>
                 <div className="footer-copyright">
-                  <span>© 
-                    Copyright © All rights reserved
-                    </span>
+                  <span>
+                    © Copyright © All rights reserved
+                  </span>
+                  <br/>
+                  <span>
+                    Made by <strong>Byron Jimenez</strong>
+                  </span>
                 </div>
               </div>
             </div>
@@ -48,7 +51,7 @@ const Footer = (props) => {
                   <div className="footer-widget">
                     <h3 className="footer-title">Catagories</h3>
                     <ul className="footer-links">
-                      {/* <li><a href="category.html">Web Design</a></li> */}
+                      <li><a href="#">Soon</a></li>
                     </ul>
                   </div>
                 </div>
@@ -71,11 +74,13 @@ const Footer = (props) => {
                   <li>        
                     <LinkedinShareButton url={url} resetButtonStyle={false}>
                         <FontAwesomeIcon icon={["fab", "linkedin"]}/>
-                    </LinkedinShareButton></li>
+                    </LinkedinShareButton>
+                  </li>
                   <li>        
                     <EmailShareButton url={url} resetButtonStyle={false}>
                         <FontAwesomeIcon icon={["fa", "envelope"]}/>
-                    </EmailShareButton></li>
+                    </EmailShareButton>
+                  </li>
                 </ul>
               </div>
             </div>

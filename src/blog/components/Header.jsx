@@ -1,12 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import logo from '../../../storage/static/logo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { EmailShareButton, FacebookShareButton, LinkedinShareButton, TwitterShareButton } from 'react-share';
+import logo from '../../../storage/static/logo.png'
 
 class Header extends React.Component {
 
     constructor(props) {
         super(props)
+		this.url = window.location.href
         this.navbarFixed = React.createRef();
         this.navbarTheme = React.createRef();
 		this.searchForm = React.createRef();
@@ -76,15 +78,15 @@ class Header extends React.Component {
 							</ul>
 
 							<div className="nav-btns">
-								<button className="search-btn" onClick={this.openSearchForm}><FontAwesomeIcon icon="search"/></button>
+								{/* <button className="search-btn" onClick={this.openSearchForm}><FontAwesomeIcon icon="search"/></button> */}
 								<button className="aside-btn" onClick={this.openNavAside}><FontAwesomeIcon icon="bars"/></button>
-								<div className="container">
+								{/* <div className="container">
 									<div className="search-form" ref={this.searchForm}>
 										<input className="search-input" type="text" name="search"
 											placeholder="Enter Your Search ..." />
 										<button className="search-close" onClick={this.closeSearchForm}><FontAwesomeIcon icon="times"/></button>
 									</div>
-								</div>
+								</div> */}
 							</div>
 						</div>
 					</div>
@@ -103,17 +105,28 @@ class Header extends React.Component {
 						</div>
 
 						<div className="section-row">
-							<h3>Recent Posts</h3>
-
-						</div>
-
-						<div className="section-row">
 							<h3>Follow us</h3>
 							<ul className="nav-aside-social">
-								<li><a href="#"><i className="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i className="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i className="fa fa-google-plus"></i></a></li>
-								<li><a href="#"><i className="fa fa-pinterest"></i></a></li>
+								<li>
+									<FacebookShareButton url={this.url} resetButtonStyle={false}>
+										<FontAwesomeIcon icon={["fab", "facebook"]}/>
+									</FacebookShareButton>
+								</li>
+								<li>
+									<TwitterShareButton url={this.url} resetButtonStyle={false}>
+										<FontAwesomeIcon icon={["fab", "twitter"]}/>
+									</TwitterShareButton>
+								</li>
+								<li>        
+									<LinkedinShareButton url={this.url} resetButtonStyle={false}>
+										<FontAwesomeIcon icon={["fab", "linkedin"]}/>
+									</LinkedinShareButton>
+								</li>
+								<li>        
+									<EmailShareButton url={this.url} resetButtonStyle={false}>
+										<FontAwesomeIcon icon={["fa", "envelope"]}/>
+									</EmailShareButton>
+								</li>
 							</ul>
 						</div>
 
