@@ -5,6 +5,7 @@ import Article from './pages/Article.jsx'
 import Category from './pages/Category.jsx'
 import About from './pages/About.jsx'
 import Contact from './pages/Contact.jsx'
+import Tag from './pages/Tag.jsx'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
 import api from './api.js';
@@ -23,7 +24,7 @@ function App() {
         api.get('/tags/menu')
         .then(response => {
             tags = response.data.map(item => {
-                return {name: item.name, link: '/' + item.slug}
+                return {name: item.name, link: '/tag/' + item.slug}
             })
             setMenu(def.concat(tags)) 
         })
@@ -40,6 +41,7 @@ function App() {
                         <Route exact path="/" component={Home}/>
                         <Route exact path="/post/:slug" component={Article}/>
                         <Route exact path="/category/:slug" component={Category}/>
+                        <Route exact path="/tag/:slug" component={Tag}/>
                         <Route exact path="/about" component={About}/>
                         <Route exact path="/contact" component={Contact}/>
                     </Switch>
