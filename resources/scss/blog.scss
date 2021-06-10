@@ -62,22 +62,6 @@ body {
     margin: 0px 0px 15px;
   }
   
-  h1 {
-    font-size: 34px;
-  }
-  
-  h2 {
-    font-size: 28px;
-  }
-  
-  h3 {
-    font-size: 23px;
-  }
-  
-  h4 {
-    font-size: 16px;
-  }
-  
   a {
     font-weight: 600;
     color: #212631;
@@ -602,6 +586,8 @@ body {
   
       > img {
         width: 100%;
+        aspect-ratio: 16/9;
+        object-fit: cover;
       }
     }
   
@@ -951,6 +937,10 @@ body {
   
   .footer-logo {
     margin-bottom: 40px;
+
+      img {
+        max-width: 170px;
+      }
   }
   
   .footer-nav{
@@ -1009,7 +999,7 @@ body {
       display: inline-block;
       margin-right: 5px;
   
-      > a {
+      > button {
         display: block;
         width: 30px;
         height: 30px;
@@ -1017,6 +1007,7 @@ body {
         text-align: center;
         background-color: #a7b3c6;
         color: #FFF;
+        border: 0;
         border-radius: 2px;
         -webkit-transition: 0.2s opacity;
         transition: 0.2s opacity;

@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react'
-import { EmailShareButton, FacebookShareButton, LinkedinShareButton, TwitterShareButton, FacebookIcon, TwitterIcon, LinkedinIcon, EmailIcon } from 'react-share';
+import { EmailShareButton, FacebookShareButton, LinkedinShareButton, TwitterShareButton } from 'react-share';
 
 
 

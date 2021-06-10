@@ -1,17 +1,21 @@
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { EmailShareButton, FacebookShareButton, LinkedinShareButton, TwitterShareButton } from 'react-share';
 import { Link } from 'react-router-dom'
+import logo from '../../../storage/static/logo.png'
 
 const Footer = () => {
+  const url = window.location.href
     return (
         <footer id="footer">
         {/* container */}
         <div className="container">
           {/* row */}
           <div className="row">
-            <div className="col-md-5">
+            <div className="col-md-4">
               <div className="footer-widget">
                 <div className="footer-logo">
-                  <a href="index.html" className="logo"><img src="./img/logo.png" alt="" /></a>
+                  <a href="index.html" className="logo"><img src={logo} alt="" /></a>
                 </div>
                 <ul className="footer-nav">
                   <li><a href="#">Privacy Policy</a></li>
@@ -24,7 +28,7 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-            <div className="col-md-4">
+            <div className="col-md-5">
               <div className="row">
                 <div className="col-md-6">
                   <div className="footer-widget">
@@ -54,18 +58,26 @@ const Footer = () => {
             </div>
             <div className="col-md-3">
               <div className="footer-widget">
-                <h3 className="footer-title">Join our Newsletter</h3>
-                <div className="footer-newsletter">
-                  <form>
-                    <input className="form-control" type="email" name="newsletter" placeholder="Enter your email" />
-                    <button className="newsletter-btn"><i className="fa fa-paper-plane" /></button>
-                  </form>
-                </div>
+                <h3 className="footer-title">Haz que nos conozcan</h3>
                 <ul className="footer-social">
-                  <li><a href="#"><i className="fa fa-facebook" /></a></li>
-                  <li><a href="#"><i className="fa fa-twitter" /></a></li>
-                  <li><a href="#"><i className="fa fa-google-plus" /></a></li>
-                  <li><a href="#"><i className="fa fa-pinterest" /></a></li>
+                  <li>
+                    <FacebookShareButton url={url} resetButtonStyle={false}>
+                        <FontAwesomeIcon icon={["fab", "facebook"]}/>
+                    </FacebookShareButton>
+                  </li>
+                  <li>
+                    <TwitterShareButton url={url} resetButtonStyle={false}>
+                        <FontAwesomeIcon icon={["fab", "twitter"]}/>
+                    </TwitterShareButton>
+                  </li>
+                  <li>        
+                    <LinkedinShareButton url={url} resetButtonStyle={false}>
+                        <FontAwesomeIcon icon={["fab", "linkedin"]}/>
+                    </LinkedinShareButton></li>
+                  <li>        
+                    <EmailShareButton url={url} resetButtonStyle={false}>
+                        <FontAwesomeIcon icon={["fa", "envelope"]}/>
+                    </EmailShareButton></li>
                 </ul>
               </div>
             </div>

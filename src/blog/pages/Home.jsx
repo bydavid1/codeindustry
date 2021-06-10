@@ -68,7 +68,7 @@ class Home extends React.Component {
                     <meta name="twitter:image" content={ this.state.home.image ? this.state.home.image.url : ''}/>
                 </MetaTags>
                 <div className="page-header">
-                    <div className="container">
+                    <div className="container-xl">
                         <div className="row">
                             <div className="col-md-10">
                                 <ul className="page-header-breadcrumb">
@@ -80,7 +80,7 @@ class Home extends React.Component {
                     </div>
                 </div>
                  <div className="section">
-                     <div className="container">
+                     <div className="container-xl">
                          <div className="row">
                             <div className="col-md-12">
                                  <div className="section-title">
@@ -90,7 +90,7 @@ class Home extends React.Component {
                             {
                                 this.state.posts.length > 0 ? (
                                     this.state.posts.flatMap(post => 
-                                        <div key={post._id} className="col-md-6">
+                                        <div key={post._id} className="col-md-4 col-sm-6">
                                             <Post style="thumb" title={post.title} cover={post.cover.url} date={post.date}
                                              category={post.category.title} postSlug={post.slug} categorySlug={post.category.slug}/>
                                         </div>
@@ -110,7 +110,7 @@ class Home extends React.Component {
                              {
                                 this.state.recents.length > 0 ? (
                                     this.state.recents.flatMap(post => 
-                                        <div key={post._id} className="col-md-4">
+                                        <div key={post._id} className="col-md-4 col-sm-6">
                                             <Post title={post.title} cover={post.cover.url} slug={post.slug} date={post.date}
                                              category={post.category.title}/>
                                         </div>
@@ -120,11 +120,8 @@ class Home extends React.Component {
                                 )
                             }
                          </div>
-                         {/* /row */}
                      </div>
-                     {/* /container */}
                  </div>
-                 {/* /section */}
             </>
         )
     }
