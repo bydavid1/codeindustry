@@ -49,7 +49,7 @@ class PostBody extends React.Component {
             window.addEventListener('scroll', this.onStart)
             window.addEventListener('resize', this.onResize)
 
-        }, 1000);
+        }, 500);
     }
 
     componentWillUnmount() {

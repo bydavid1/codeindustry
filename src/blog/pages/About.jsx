@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactMarkdown from 'react-markdown';
 import MetaTags from 'react-meta-tags';
+import { Link } from 'react-router-dom';
 import adPlaceholder from '../../../storage/static/ad-1.jpg'
 import api from '../api';
 
@@ -47,7 +48,7 @@ class About extends Component {
                         <div className="row">
                             <div className="col-md-10">
                                 <ul className="page-header-breadcrumb">
-                                    <li><a href="index.html">Home</a></li>
+                                    <li><Link to="/">Inicio</Link></li>
                                     <li>{this.state.about.title}</li>
                                 </ul>
                                 <h1>{this.state.about.title}</h1>

@@ -4,6 +4,7 @@ import adPlaceholder from '../../../storage/static/ad-1.jpg'
 import Post from '../components/Post.jsx'
 import Loader from '../components/Loader.jsx';
 import MetaTags from 'react-meta-tags';
+import { Link } from 'react-router-dom';
 
 class Category extends Component {
 
@@ -53,7 +54,7 @@ class Category extends Component {
                         <div className="row">
                             <div className="col-md-10">
                                 <ul className="page-header-breadcrumb">
-                                    <li><a href="index.html">Home</a></li>
+                                    <li><Link to="/">Inicio</Link></li>
                                     <li>Category</li>
                                 </ul>
                                 <h1>{this.state.category.title}</h1>

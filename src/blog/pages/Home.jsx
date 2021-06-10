@@ -3,6 +3,7 @@ import api from '../api'
 import Post from '../components/Post.jsx'
 import Loader from '../components/Loader.jsx';
 import MetaTags from 'react-meta-tags';
+import { Link } from 'react-router-dom';
 
 class Home extends React.Component {
 
@@ -72,7 +73,7 @@ class Home extends React.Component {
                         <div className="row">
                             <div className="col-md-10">
                                 <ul className="page-header-breadcrumb">
-                                    <li><a href="index.html">{this.state.home.title}</a></li>
+                                    <li><Link to="/">{this.state.home.title}</Link></li>
                                 </ul>
                                 <h1>Code Industry</h1>
                             </div>
