@@ -1,0 +1,60 @@
+{
+  "name": "bydavid1.github.io",
+  "version": "1.0.0",
+  "description": "My portfolio",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "watch:server": "nodemon server/index.js --ignore src/",
+    "watch:app": "webpack -w --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bydavid1/bydavid1.github.io.git"
+  },
+  "author": "Byron Jimenez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bydavid1/bydavid1.github.io/issues"
+  },
+  "homepage": "https://github.com/bydavid1/bydavid1.github.io#readme",
+  "dependencies": {
+    "@babel/runtime": "^7.12.5",
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-brands-svg-icons": "^5.15.3",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.7",
+    "morgan": "^1.10.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-github-activity": "^1.0.2",
+    "react-markdown": "^6.0.2",
+    "react-meta-tags": "^1.0.1",
+    "react-router-dom": "^5.2.0",
+    "react-share": "^4.4.0",
+    "react-syntax-highlighter": "^15.4.3"
+  },
+  "devDependencies": {
+    "@babel/core": "7.12.13",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/preset-env": "7.12.13",
+    "@babel/preset-react": "7.12.13",
+    "babel-loader": "8.2.2",
+    "css-loader": "^5.2.4",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.0.0",
+    "mini-css-extract-plugin": "^1.6.0",
+    "nodemon": "^2.0.7",
+    "remove-files-webpack-plugin": "^1.4.4",
+    "sass": "^1.32.12",
+    "sass-loader": "^11.0.1",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.20.1",
+    "webpack-cli": "4.5.0",
+    "webpack-dev-server": "3.11.2"
+  }
+}
