@@ -113,7 +113,7 @@ class Home extends React.Component {
                                     this.state.recents.flatMap(post => 
                                         <div key={post._id} className="col-md-4 col-sm-6">
                                             <Post title={post.title} cover={post.cover.url} slug={post.slug} date={post.date}
-                                             category={post.category.title}/>
+                                             category={post.category.title} postSlug={post.slug} categorySlug={post.category.slug}/>
                                         </div>
                                     )
                                 ) : (
