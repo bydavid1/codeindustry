@@ -6,6 +6,7 @@ import Category from './pages/Category.jsx'
 import About from './pages/About.jsx'
 import Contact from './pages/Contact.jsx'
 import Tag from './pages/Tag.jsx'
+import NotFound from './components/NotFound.jsx'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
 import api from './api.js';
@@ -44,6 +45,7 @@ function App() {
                         <Route exact path="/tag/:slug" component={Tag}/>
                         <Route exact path="/about" component={About}/>
                         <Route exact path="/contact" component={Contact}/>
+                        <Route path="*" component={NotFound}/>
                     </Switch>
                 <Footer menu={menu}/>
             </BrowserRouter>

@@ -6,6 +6,7 @@ import PostAuthor from '../components/PostAuthor.jsx'
 import PostBody from '../components/PostBody.jsx';
 import PostHeader from '../components/PostHeader.jsx';
 import Loader from '../components/Loader.jsx';
+import NotFound from '../components/NotFound.jsx';
 import MetaTags from 'react-meta-tags';
 
 class Article extends React.Component{
@@ -13,7 +14,8 @@ class Article extends React.Component{
   constructor(props) {
     super(props)
     this.state = {
-      article: {}
+      article: {},
+      status: 0
     }
   }
 
@@ -22,15 +24,21 @@ class Article extends React.Component{
     api.get('/posts/content/' + slug)
     .then(response => {
         this.setState({
-          article: response.data
+          article: response.data,
+          status: 200
         })
     })
     .catch(error => {
-        console.error(error)
+      if (error.response.status == 404) {
+        this.setState({
+          status: 404
+        })
+      }
     })
   }
 
     render() {
+      if (this.state.status == 200) {
         return (
           <>
             <MetaTags>
@@ -83,6 +91,12 @@ class Article extends React.Component{
             }
           </>    
         );
+      } else {
+        return (
+          <NotFound/>
+        )
+      }
+
     }
 }
 
