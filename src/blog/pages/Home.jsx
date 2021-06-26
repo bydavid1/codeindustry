@@ -10,41 +10,26 @@ class Home extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            posts: [],
-            recents: [],
-            home: {}
+            home: {
+                editorsChoice: [],
+                recents: []
+            },
+            loading: true
         }
     }
 
     componentDidMount() {
-        api.get('/posts/home/editorsChoice')
+        api.get('/posts/home')
         .then(response => {
             this.setState({
-                posts: response.data
+                home: response.data,
+                loading: false
             })
         })
         .catch(error => {
-            console.error(error)
-        })
-
-        api.get('/posts/home/recent')
-        .then(response => {
             this.setState({
-                recents: response.data
+                loading: false
             })
-        })
-        .catch(error => {
-            console.error(error)
-        })
-
-        api.get('/home-page')
-        .then(response => {
-            this.setState({
-                home: response.data
-            })
-        })
-        .catch(error => {
-            console.error(error)
         })
     }
 
@@ -89,15 +74,19 @@ class Home extends React.Component {
                                  </div>
                              </div>
                             {
-                                this.state.posts.length > 0 ? (
-                                    this.state.posts.flatMap(post => 
-                                        <div key={post._id} className="col-md-4 col-sm-6">
-                                            <Post style="thumb" title={post.title} cover={post.cover.url} date={post.date}
-                                             category={post.category.title} postSlug={post.slug} categorySlug={post.category.slug}/>
-                                        </div>
-                                    )
+                                this.state.loading === true ? (
+                                    <Loader/> 
                                 ) : (
-                                    <Loader/>  
+                                    this.state.home.editorsChoice.length > 0 ? (
+                                        this.state.home.editorsChoice.flatMap(post => 
+                                            <div key={post._id} className="col-md-4 col-sm-6">
+                                                <Post style="thumb" title={post.title} cover={post.cover.url} date={post.date}
+                                                 category={post.category.title} postSlug={post.slug} categorySlug={post.category.slug}/>
+                                            </div>
+                                        )
+                                    ) : (
+                                        <h6>No hay posts disponibles</h6> 
+                                    )
                                 )
                             }
                          </div>
@@ -109,15 +98,19 @@ class Home extends React.Component {
                                  </div>
                              </div>
                              {
-                                this.state.recents.length > 0 ? (
-                                    this.state.recents.flatMap(post => 
-                                        <div key={post._id} className="col-md-4 col-sm-6">
-                                            <Post title={post.title} cover={post.cover.url} slug={post.slug} date={post.date}
-                                             category={post.category.title} postSlug={post.slug} categorySlug={post.category.slug}/>
-                                        </div>
-                                    )
+                                this.state.loading === true ? (
+                                    <Loader/> 
                                 ) : (
-                                    <Loader/>  
+                                    this.state.home.recents.length > 0 ? (
+                                        this.state.home.recents.flatMap(post => 
+                                            <div key={post._id} className="col-md-4 col-sm-6">
+                                                <Post title={post.title} cover={post.cover.url} slug={post.slug} date={post.date}
+                                                 category={post.category.title} postSlug={post.slug} categorySlug={post.category.slug}/>
+                                            </div>
+                                        )
+                                    ) : (
+                                        <h6>No hay posts disponibles</h6> 
+                                    )
                                 )
                             }
                          </div>
