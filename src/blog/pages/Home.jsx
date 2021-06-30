@@ -11,8 +11,12 @@ class Home extends React.Component {
         super(props)
         this.state = {
             home: {
-                editorsChoice: [],
-                recents: []
+                info: {},
+                ids: {
+                    editorsPick: [],
+                    recents: [],
+                },
+                posts: []
             },
             loading: true
         }
@@ -22,7 +26,13 @@ class Home extends React.Component {
         api.get('/posts/home')
         .then(response => {
             this.setState({
-                home: response.data,
+                home: {
+                    ids: {
+                        editorsPick: response.data.ids.editorsPick,
+                        recents: response.data.ids.recents,
+                    },
+                    posts: response.data.posts,
+                },
                 loading: false
             })
         })
@@ -33,25 +43,31 @@ class Home extends React.Component {
         })
     }
 
+
     render() {
+        let editorsPick = []
+        let recents = []
+
+
+
         return (
             <>
                 <MetaTags>
                     <title>{ this.state.home.title }</title>
-                    <meta name="description" content={ this.state.home.extract } /> 
+                    {/* <meta name="description" content={ this.state.home.extract } />  */}
 
                     {/* og meta */}
-                    <meta property="og:title" content={ this.state.home.title }  />
+                    {/* <meta property="og:title" content={ this.state.home.title }  />
                     <meta property="og:description" content={ this.state.home.extract } />
                     <meta property="og:image" content={ this.state.home.image ? this.state.home.image.url : ''}  />
                     <meta property="og:url" content={this.state.home.url}/>
-                    <meta property="og:type" content={this.state.home.website}/>
+                    <meta property="og:type" content={this.state.home.website}/> */}
                     {/* twitter meta */}
-                    <meta name="twitter:card" content="summary_large_image"/>
+                    {/* <meta name="twitter:card" content="summary_large_image"/>
                     <meta property="twitter:url" content={this.state.home.url}/>
                     <meta name="twitter:title" content={ this.state.home.title }/>
                     <meta name="twitter:description" content={ this.state.home.extract }/>
-                    <meta name="twitter:image" content={ this.state.home.image ? this.state.home.image.url : ''}/>
+                    <meta name="twitter:image" content={ this.state.home.image ? this.state.home.image.url : ''}/> */}
                 </MetaTags>
                 <div className="page-header">
                     <div className="container-xl">
@@ -77,19 +93,35 @@ class Home extends React.Component {
                                 this.state.loading === true ? (
                                     <Loader/> 
                                 ) : (
-                                    this.state.home.editorsChoice.length > 0 ? (
-                                        this.state.home.editorsChoice.flatMap(post => 
-                                            <div key={post._id} className="col-md-4 col-sm-6">
-                                                <Post style="thumb" title={post.title} cover={post.cover.url} date={post.date}
-                                                 category={post.category.title} postSlug={post.slug} categorySlug={post.category.slug}/>
-                                            </div>
-                                        )
+                                    this.state.home.ids.editorsPick.length > 0 ? (
+                                        //iterating in editorsPick ids
+                                        this.state.home.ids.editorsPick.map(id => {
+                                            for (const property in this.state.home.posts) {
+                                                const currentObject = this.state.home.posts[property]
+                                                //Validating if property contains object and _id property exist
+                                                if (String(id) === String(currentObject._id)) {
+                                                    return (
+                                                        <div key={currentObject._id} className="col-md-4 col-sm-6">
+                                                            <Post style="thumb" 
+                                                                title={currentObject.title} 
+                                                                cover={currentObject.cover.url} 
+                                                                date={currentObject.date}
+                                                                category={currentObject.category.title} 
+                                                                postSlug={currentObject.slug} 
+                                                                categorySlug={currentObject.category.slug}/>
+                                                        </div>
+                                                    )
+                                                }
+                                            }
+                                        })
                                     ) : (
                                         <h6>No hay posts disponibles</h6> 
                                     )
                                 )
                             }
                          </div>
+
+                        {/* Recent posts */}
 
                          <div className="row">
                              <div className="col-md-12">
@@ -101,13 +133,26 @@ class Home extends React.Component {
                                 this.state.loading === true ? (
                                     <Loader/> 
                                 ) : (
-                                    this.state.home.recents.length > 0 ? (
-                                        this.state.home.recents.flatMap(post => 
-                                            <div key={post._id} className="col-md-4 col-sm-6">
-                                                <Post title={post.title} cover={post.cover.url} slug={post.slug} date={post.date}
-                                                 category={post.category.title} postSlug={post.slug} categorySlug={post.category.slug}/>
-                                            </div>
-                                        )
+                                    this.state.home.ids.recents.length > 0 ? (
+                                        //iterating in editorsPick ids
+                                        this.state.home.ids.recents.map(id => {
+                                            for (const property in this.state.home.posts) {
+                                                const currentObject = this.state.home.posts[property]
+                                                //Validating if property contains object and _id property exist
+                                                if (String(id) === String(currentObject._id)) {
+                                                    return (
+                                                        <div key={currentObject._id} className="col-md-4 col-sm-6">
+                                                            <Post title={currentObject.title} 
+                                                                cover={currentObject.cover.url} 
+                                                                date={currentObject.date}
+                                                                category={currentObject.category.title} 
+                                                                postSlug={currentObject.slug} 
+                                                                categorySlug={currentObject.category.slug}/>
+                                                        </div>
+                                                    )
+                                                }
+                                            }
+                                        })
                                     ) : (
                                         <h6>No hay posts disponibles</h6> 
                                     )
