@@ -6,7 +6,7 @@ const Certification = function(props) {
         <div className="item">
             <h3 className="title">
                 <FontAwesomeIcon icon="graduation-cap" className="mx-1"/>{props.title}</h3>
-            <h4 className="university">{props.school} <span className="year">{props.dateRange}</span>
+            <h4 className="university">{props.school} <span className="year">{`${props.startDate} - ${props.endDate}`}</span>
             </h4>
         </div>
     )

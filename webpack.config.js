@@ -2,6 +2,7 @@ const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const RemovePlugin = require('remove-files-webpack-plugin')
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
     entry: {
@@ -68,6 +69,7 @@ module.exports = {
                 root: './public',
                 exclude: ['./storage']
             },
-        })
+        }),
+        new Dotenv()
     ]
 }

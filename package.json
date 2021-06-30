@@ -45,6 +45,7 @@
     "@babel/preset-react": "7.12.13",
     "babel-loader": "8.2.2",
     "css-loader": "^5.2.4",
+    "dotenv-webpack": "^7.0.3",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.0.0",
     "mini-css-extract-plugin": "^1.6.0",
