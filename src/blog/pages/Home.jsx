@@ -10,29 +10,32 @@ class Home extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            home: {
-                info: {},
-                ids: {
-                    editorsPick: [],
-                    recents: [],
-                },
-                posts: []
-            },
             loading: true
+        }
+
+        this.home = {
+            info: {},
+            ids: {
+                editorsPick: [],
+                recents: [],
+            },
+            posts: []
         }
     }
 
     componentDidMount() {
         api.get('/posts/home')
         .then(response => {
-            this.setState({
-                home: {
-                    ids: {
-                        editorsPick: response.data.ids.editorsPick,
-                        recents: response.data.ids.recents,
-                    },
-                    posts: response.data.posts,
+
+            this.home = {
+                ids: {
+                    editorsPick: response.data.ids.editorsPick,
+                    recents: response.data.ids.recents,
                 },
+                posts: response.data.posts,
+            }
+
+            this.setState({
                 loading: false
             })
         })
@@ -45,36 +48,31 @@ class Home extends React.Component {
 
 
     render() {
-        let editorsPick = []
-        let recents = []
-
-
-
         return (
             <>
                 <MetaTags>
-                    <title>{ this.state.home.title }</title>
-                    {/* <meta name="description" content={ this.state.home.extract } />  */}
+                    <title>{ this.home.title }</title>
+                    <meta name="description" content={ this.home.extract } /> 
 
                     {/* og meta */}
-                    {/* <meta property="og:title" content={ this.state.home.title }  />
-                    <meta property="og:description" content={ this.state.home.extract } />
-                    <meta property="og:image" content={ this.state.home.image ? this.state.home.image.url : ''}  />
-                    <meta property="og:url" content={this.state.home.url}/>
-                    <meta property="og:type" content={this.state.home.website}/> */}
+                    <meta property="og:title" content={ this.home.title }  />
+                    <meta property="og:description" content={ this.home.extract } />
+                    <meta property="og:image" content={ this.home.image ? this.home.image.url : ''}  />
+                    <meta property="og:url" content={this.home.url}/>
+                    <meta property="og:type" content={this.home.website}/>
                     {/* twitter meta */}
-                    {/* <meta name="twitter:card" content="summary_large_image"/>
-                    <meta property="twitter:url" content={this.state.home.url}/>
-                    <meta name="twitter:title" content={ this.state.home.title }/>
-                    <meta name="twitter:description" content={ this.state.home.extract }/>
-                    <meta name="twitter:image" content={ this.state.home.image ? this.state.home.image.url : ''}/> */}
+                    <meta name="twitter:card" content="summary_large_image"/>
+                    <meta property="twitter:url" content={this.home.url}/>
+                    <meta name="twitter:title" content={ this.home.title }/>
+                    <meta name="twitter:description" content={ this.home.extract }/>
+                    <meta name="twitter:image" content={ this.home.image ? this.home.image.url : ''}/>
                 </MetaTags>
                 <div className="page-header">
                     <div className="container-xl">
                         <div className="row">
                             <div className="col-md-10">
                                 <ul className="page-header-breadcrumb">
-                                    <li><Link to="/">{this.state.home.title}</Link></li>
+                                    <li><Link to="/">{this.home.title}</Link></li>
                                 </ul>
                                 <h1>Code Industry</h1>
                             </div>
@@ -93,11 +91,11 @@ class Home extends React.Component {
                                 this.state.loading === true ? (
                                     <Loader/> 
                                 ) : (
-                                    this.state.home.ids.editorsPick.length > 0 ? (
+                                    this.home.ids.editorsPick.length > 0 ? (
                                         //iterating in editorsPick ids
-                                        this.state.home.ids.editorsPick.map(id => {
-                                            for (const property in this.state.home.posts) {
-                                                const currentObject = this.state.home.posts[property]
+                                        this.home.ids.editorsPick.map(id => {
+                                            for (const property in this.home.posts) {
+                                                const currentObject = this.home.posts[property]
                                                 //Validating if property contains object and _id property exist
                                                 if (String(id) === String(currentObject._id)) {
                                                     return (
@@ -133,11 +131,11 @@ class Home extends React.Component {
                                 this.state.loading === true ? (
                                     <Loader/> 
                                 ) : (
-                                    this.state.home.ids.recents.length > 0 ? (
+                                    this.home.ids.recents.length > 0 ? (
                                         //iterating in editorsPick ids
-                                        this.state.home.ids.recents.map(id => {
-                                            for (const property in this.state.home.posts) {
-                                                const currentObject = this.state.home.posts[property]
+                                        this.home.ids.recents.map(id => {
+                                            for (const property in this.home.posts) {
+                                                const currentObject = this.home.posts[property]
                                                 //Validating if property contains object and _id property exist
                                                 if (String(id) === String(currentObject._id)) {
                                                     return (
