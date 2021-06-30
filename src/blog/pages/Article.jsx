@@ -14,8 +14,14 @@ class Article extends React.Component{
   constructor(props) {
     super(props)
     this.state = {
-      article: {},
+      loading: true,
       status: 0
+    }
+
+    this.article = {
+      cover: {},
+      category: {},
+      created_by: {}
     }
   }
 
@@ -23,80 +29,78 @@ class Article extends React.Component{
     let slug = this.props.match.params.slug
     api.get('/posts/content/' + slug)
     .then(response => {
+      this.article = response.data;
         this.setState({
-          article: response.data,
-          status: 200
+          loading: false,
+          status: response.status
         })
     })
     .catch(error => {
-      if (error.response.status == 404) {
-        this.setState({
-          status: 404
-        })
-      }
+      console.log(error)
+      this.setState({
+        loading: false,
+        status: error.response.status
+      })
     })
   }
 
     render() {
-      if (this.state.status == 200) {
-        return (
-          <>
-            <MetaTags>
-              <title>{ this.state.article.title }</title>
-              <meta name="description" content={ this.state.article.content ? this.state.article.content.slice(0, 150) : ''  } /> 
-
-              {/* og meta */}
-              <meta property="og:title" content={ this.state.article.title }  />
-              <meta property="og:description" content={ this.state.article.content ? this.state.article.content.slice(0, 150) : '' } />
-              <meta property="og:image" content={ this.state.article.cover ? this.state.article.cover.url : ''}  />
-              <meta property="og:url" content={window.location.href}/>
-              <meta property="og:type" content="article"/>
-              {/* twitter meta */}
-              <meta name="twitter:card" content="summary_large_image"/>
-              <meta property="twitter:url" content={window.location.href}/>
-              <meta name="twitter:title" content={ this.state.article.title }/>
-              <meta name="twitter:description" content={ this.state.article.content ? this.state.article.content.slice(0, 150) : ''  }/>
-              <meta name="twitter:image" content={ this.state.article.cover ? this.state.article.cover.url : ''}/>
-            </MetaTags>
-            {
-              Object.keys(this.state.article).length > 0 ? (
+      return (
+        <>
+          {
+            this.state.loading === true ? (
+              <Loader/>
+            ) : (
+              this.state.status === 200 ? (
                 <>
-                  <div className="page-header post-header">
-                    <PostHeader cover={this.state.article.cover.url} date={this.state.article.date}
-                      title={this.state.article.title} category={this.state.article.category.title} categorySlug={this.state.article.category.slug} />
-                  </div>
-                  <div className="section">
-                    <div className="container">
-                      <div className="row">
-                        <div className="col-md-8">
-                          <PostBody content={this.state.article.content} />
-                          <hr />
-                          <PostAuthor firstname={this.state.article.admin_user.firstname}
-                            lastname={this.state.article.admin_user.lastname} />
-                        </div>
-                        <div className="col-md-4">
-                          <div className="aside-widget text-center">
-                            <a href="#" style={{display: 'inline-block', margin: 'auto'}}>
-                              <img className="img-responsive" src={adPlaceholder} alt="" />
-                            </a>
-                          </div>
+                <MetaTags>
+                  <title>{ this.article.title }</title>
+                  <meta name="description" content={ this.article.content.slice(0, 150) } /> 
+    
+                  {/* og meta */}
+                  <meta property="og:title" content={ this.article.title }  />
+                  <meta property="og:description" content={ this.article.content.slice(0, 150) } />
+                  <meta property="og:image" content={ this.article.cover.url }  />
+                  <meta property="og:url" content={window.location.href}/>
+                  <meta property="og:type" content="article"/>
+                  {/* twitter meta */}
+                  <meta name="twitter:card" content="summary_large_image"/>
+                  <meta property="twitter:url" content={window.location.href}/>
+                  <meta name="twitter:title" content={ this.article.title }/>
+                  <meta name="twitter:description" content={ this.article.content.slice(0, 150)  }/>
+                  <meta name="twitter:image" content={ this.article.cover.url }/>
+                </MetaTags>
+                <div className="page-header post-header">
+                  <PostHeader cover={this.article.cover.url } date={this.article.date}
+                    title={this.article.title} category={this.article.category.title} categorySlug={this.article.category.slug} />
+                </div>
+                <div className="section">
+                  <div className="container">
+                    <div className="row">
+                      <div className="col-md-8">
+                        <PostBody content={this.article.content} />
+                        <hr />
+                        <PostAuthor firstname={this.article.created_by.firstname}
+                          lastname={this.article.created_by.lastname} />
+                      </div>
+                      <div className="col-md-4">
+                        <div className="aside-widget text-center">
+                          <a href="#" style={{display: 'inline-block', margin: 'auto'}}>
+                            <img className="img-responsive" src={adPlaceholder} alt="" />
+                          </a>
                         </div>
                       </div>
                     </div>
                   </div>
-                </>
+                </div>
+              </>  
               ) : (
-                  <Loader/>
+                <NotFound/>
               )
-            }
-          </>    
-        );
-      } else {
-        return (
-          <NotFound/>
-        )
-      }
-
+            )
+          }
+        </>
+      )
     }
 }
 
