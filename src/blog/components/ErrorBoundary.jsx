@@ -1,16 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import graphic from '../../../storage/static/error.svg'
 
-class ErrorBoundary extends Component {
+class ErrorBoundary extends React.Component {
     constructor(props) {
       super(props);
       this.state = { hasError: false };
     }
-  
+
     static getDerivedStateFromError(error) {
-      // Show internal error component
+      // Update state so the next render will show the fallback UI.
       return { hasError: true };
+    }
+  
+    componentDidCatch(error, errorInfo) {
+      // You can also log the error to an error reporting service
+      console.log(`${error} ${errorInfo}`);
     }
   
     render() {
