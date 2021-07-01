@@ -1,13 +1,18 @@
-import React from 'react'
-import { withRouter } from "react-router-dom";
-import api from '../api'
-import adPlaceholder from '../../../storage/static/ad-1.jpg'
+//Core
+import React, { lazy, Suspense } from 'react'
+import MetaTags from 'react-meta-tags';
+//Components
+import { withError } from '../components/ErrorBoundary.jsx';
+import Loader from '../components/Loader.jsx';
 import PostAuthor from '../components/PostAuthor.jsx'
 import PostBody from '../components/PostBody.jsx';
 import PostHeader from '../components/PostHeader.jsx';
-import Loader from '../components/Loader.jsx';
-import NotFound from '../components/NotFound.jsx';
-import MetaTags from 'react-meta-tags';
+import PageLoader from '../components/PageLoader.jsx'
+const NotFound = lazy(() => import('../components/NotFound.jsx'));
+//Services
+import api from '../api'
+//Assets
+import adPlaceholder from '../../../storage/static/ad-1.jpg'
 
 class Article extends React.Component{
 
@@ -95,7 +100,9 @@ class Article extends React.Component{
                 </div>
               </>  
               ) : (
-                <NotFound/>
+                <Suspense fallback={<PageLoader/>}>
+                  <NotFound/>
+                </Suspense>
               )
             )
           }
@@ -104,4 +111,4 @@ class Article extends React.Component{
     }
 }
 
-export default withRouter(Article);
+export default withError(Article);

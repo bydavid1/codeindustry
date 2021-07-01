@@ -4,9 +4,9 @@
   "description": "My portfolio",
   "main": "src/index.js",
   "scripts": {
-    "dev": "webpack --mode development",
-    "watch:server": "nodemon server/index.js --ignore src/",
-    "watch:app": "webpack -w --mode development"
+    "watch:server": "nodemon server/index.js --ignore src/*.js",
+    "watch:app": "webpack -w --mode development",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",

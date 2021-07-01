@@ -1,21 +1,24 @@
-import React, { useEffect, useState } from 'react';
+//Core
+import React, { Suspense, lazy, useEffect, useState } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Home from './pages/Home.jsx'
-import Article from './pages/Article.jsx'
-import Category from './pages/Category.jsx'
-import About from './pages/About.jsx'
-import Contact from './pages/Contact.jsx'
-import Tag from './pages/Tag.jsx'
-import NotFound from './components/NotFound.jsx'
-import Error500 from './components/Error500.jsx'
-import Header from './components/Header.jsx'
-import Footer from './components/Footer.jsx'
+//Components
+import PageLoader from './components/PageLoader.jsx'
+const Home = lazy(() => import('./pages/Home.jsx'))
+const Article = lazy(() => import('./pages/Article.jsx'))
+const Category = lazy(() => import('./pages/Category.jsx'))
+const About = lazy(() => import('./pages/About.jsx'))
+const Contact = lazy(() => import('./pages/Contact.jsx'))
+const Tag = lazy(() => import('./pages/Tag.jsx'))
+const NotFound = lazy(() => import('./components/NotFound.jsx'))
+const Header = lazy(() => import('./components/Header.jsx'))
+const Footer = lazy(() => import('./components/Footer.jsx'))
+//Services
 import api from './api.js';
 
 function App() {
-
+    
     const [menu, setMenu] = useState([])
-
+    
     let tags = []
     let def = [
         {name: 'Inicio', link: '/'},
@@ -33,23 +36,22 @@ function App() {
         .catch(error => console.error(error))
     }, [])
 
-
-
     return (
         <>
             <BrowserRouter>
-                <Header menu={menu}/>
-                    <Switch>
-                        <Route exact path="/" component={Home}/>
-                        <Route exact path="/post/:slug" component={Article}/>
-                        <Route exact path="/category/:slug" component={Category}/>
-                        <Route exact path="/tag/:slug" component={Tag}/>
-                        <Route exact path="/about" component={About}/>
-                        <Route exact path="/contact" component={Contact}/>
-                        <Route exact path="/error" component={Error500}/>
-                        <Route path="*" component={NotFound}/>
-                    </Switch>
-                <Footer menu={menu}/>
+                <Suspense fallback={<div><PageLoader/></div>}>
+                    <Header menu={menu}/>
+                        <Switch>
+                            <Route exact path="/" component={Home}/>
+                            <Route exact path="/post/:slug" component={Article}/>
+                            <Route exact path="/category/:slug" component={Category}/>
+                            <Route exact path="/tag/:slug" component={Tag}/>
+                            <Route exact path="/about" component={About}/>
+                            <Route exact path="/contact" component={Contact}/>
+                            <Route path="*" component={NotFound}/>
+                        </Switch>
+                    <Footer menu={menu}/>
+                </Suspense>
             </BrowserRouter>
 
         </>

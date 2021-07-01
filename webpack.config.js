@@ -5,6 +5,7 @@ const RemovePlugin = require('remove-files-webpack-plugin')
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
+    mode: process.env.NODE_ENV,
     entry: {
         portfolio: path.resolve(__dirname, 'src/portfolio/index.js'),
         blog: path.resolve(__dirname, 'src/blog/index.js')

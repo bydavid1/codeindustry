@@ -1,9 +1,13 @@
+//Core
 import React from 'react'
-import api from '../api'
-import Post from '../components/Post.jsx'
-import Loader from '../components/Loader.jsx';
 import MetaTags from 'react-meta-tags';
 import { Link } from 'react-router-dom';
+//Components
+import { withError } from '../components/ErrorBoundary.jsx';
+import Post from '../components/Post.jsx'
+import Loader from '../components/Loader.jsx';
+//Services
+import api from '../api'
 
 class Home extends React.Component {
 
@@ -164,4 +168,4 @@ class Home extends React.Component {
     }
 }
 
-export default Home;
+export default withError(Home);
