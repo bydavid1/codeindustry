@@ -1,13 +1,18 @@
+//Core
 import React from 'react'
 import { withRouter } from "react-router-dom";
-import api from '../api'
-import adPlaceholder from '../../../storage/static/ad-1.jpg'
+import MetaTags from 'react-meta-tags';
+//Components
+import ErrorBoundary from '../components/ErrorBoundary.jsx';
 import PostAuthor from '../components/PostAuthor.jsx'
 import PostBody from '../components/PostBody.jsx';
 import PostHeader from '../components/PostHeader.jsx';
 import Loader from '../components/Loader.jsx';
 import NotFound from '../components/NotFound.jsx';
-import MetaTags from 'react-meta-tags';
+//Services
+import api from '../api'
+//Assets
+import adPlaceholder from '../../../storage/static/ad-1.jpg'
 
 class Article extends React.Component{
 
@@ -46,7 +51,7 @@ class Article extends React.Component{
 
     render() {
       return (
-        <>
+        <ErrorBoundary>
           {
             this.state.loading === true ? (
               <Loader/>
@@ -99,7 +104,7 @@ class Article extends React.Component{
               )
             )
           }
-        </>
+        </ErrorBoundary>
       )
     }
 }

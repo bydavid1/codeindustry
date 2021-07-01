@@ -10,7 +10,6 @@ const About = lazy(() => import('./pages/About.jsx'))
 const Contact = lazy(() => import('./pages/Contact.jsx'))
 const Tag = lazy(() => import('./pages/Tag.jsx'))
 const NotFound = lazy(() => import('./components/NotFound.jsx'))
-const Error500 = lazy(() => import('./components/Error500.jsx'))
 const Header = lazy(() => import('./components/Header.jsx'))
 const Footer = lazy(() => import('./components/Footer.jsx'))
 //Services
@@ -49,7 +48,6 @@ function App() {
                             <Route exact path="/tag/:slug" component={Tag}/>
                             <Route exact path="/about" component={About}/>
                             <Route exact path="/contact" component={Contact}/>
-                            <Route exact path="/error" component={Error500}/>
                             <Route path="*" component={NotFound}/>
                         </Switch>
                     <Footer menu={menu}/>
