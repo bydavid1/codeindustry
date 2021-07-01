@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import { Link } from 'react-router-dom';
 import MetaTags from 'react-meta-tags';
 //Components
-import ErrorBoundary from '../components/ErrorBoundary.jsx';
+import { withError } from '../components/ErrorBoundary.jsx';
 import Loader from '../components/Loader.jsx';
 //Services
 import api from '../api';
@@ -39,7 +39,7 @@ class About extends Component {
     
     render() {
         return (
-            <ErrorBoundary>
+            <>
                 {
                     this.state.loading === true ? (
                         <Loader/>
@@ -96,9 +96,9 @@ class About extends Component {
                         </>
                     )
                 }
-            </ErrorBoundary>
+            </>
         )
     }
 }
 
-export default About;
+export default withError(About);

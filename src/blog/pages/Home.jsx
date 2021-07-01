@@ -3,7 +3,7 @@ import React from 'react'
 import MetaTags from 'react-meta-tags';
 import { Link } from 'react-router-dom';
 //Components
-import ErrorBoundary from '../components/ErrorBoundary.jsx';
+import { withError } from '../components/ErrorBoundary.jsx';
 import Post from '../components/Post.jsx'
 import Loader from '../components/Loader.jsx';
 //Services
@@ -53,7 +53,7 @@ class Home extends React.Component {
 
     render() {
         return (
-            <ErrorBoundary>
+            <>
                 <MetaTags>
                     <title>{ this.home.title }</title>
                     <meta name="description" content={ this.home.extract } /> 
@@ -163,9 +163,9 @@ class Home extends React.Component {
                          </div>
                      </div>
                  </div>
-            </ErrorBoundary>
+            </>
         )
     }
 }
 
-export default Home;
+export default withError(Home);

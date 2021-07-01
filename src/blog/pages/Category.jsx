@@ -3,7 +3,7 @@ import React, { lazy, Suspense } from 'react'
 import MetaTags from 'react-meta-tags';
 import { Link } from 'react-router-dom';
 //Components
-import ErrorBoundary from '../components/ErrorBoundary.jsx';
+import { withError } from '../components/ErrorBoundary.jsx';
 import Post from '../components/Post.jsx'
 import Loader from '../components/Loader.jsx';
 import PageLoader from '../components/PageLoader.jsx'
@@ -50,7 +50,7 @@ class Category extends React.Component {
     
     render() {
         return (
-            <ErrorBoundary>
+            <>
                 {
                     this.state.loading === true ? (
                         <Loader/>
@@ -124,9 +124,9 @@ class Category extends React.Component {
                         )
                     )
                 }
-            </ErrorBoundary>
+            </>
         )
     }
 }
 
-export default Category;
+export default withError(Category);

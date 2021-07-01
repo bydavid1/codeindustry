@@ -1,9 +1,8 @@
 //Core
 import React, { lazy, Suspense } from 'react'
-import { withRouter } from "react-router-dom";
 import MetaTags from 'react-meta-tags';
 //Components
-import ErrorBoundary from '../components/ErrorBoundary.jsx';
+import { withError } from '../components/ErrorBoundary.jsx';
 import Loader from '../components/Loader.jsx';
 import PostAuthor from '../components/PostAuthor.jsx'
 import PostBody from '../components/PostBody.jsx';
@@ -52,7 +51,7 @@ class Article extends React.Component{
 
     render() {
       return (
-        <ErrorBoundary>
+        <>
           {
             this.state.loading === true ? (
               <Loader/>
@@ -107,9 +106,9 @@ class Article extends React.Component{
               )
             )
           }
-        </ErrorBoundary>
+        </>
       )
     }
 }
 
-export default withRouter(Article);
+export default withError(Article);
