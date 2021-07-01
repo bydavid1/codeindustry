@@ -1,18 +1,19 @@
 //Core
-import React, { Component } from 'react';
+import React, { lazy, Suspense } from 'react'
 import MetaTags from 'react-meta-tags';
 import { Link } from 'react-router-dom';
 //Components
 import ErrorBoundary from '../components/ErrorBoundary.jsx';
 import Post from '../components/Post.jsx'
 import Loader from '../components/Loader.jsx';
-import NotFound from '../components/NotFound.jsx';
+import PageLoader from '../components/PageLoader.jsx'
+const NotFound = lazy(() => import('../components/NotFound.jsx'));
 //Services
 import api from '../api'
 //Assets
 import adPlaceholder from '../../../storage/static/ad-1.jpg'
 
-class Category extends Component {
+class Category extends React.Component {
 
     constructor(props) {
         super(props);
@@ -117,7 +118,9 @@ class Category extends Component {
                                 </div>
                             </>
                         ) : (
-                            <NotFound/>
+                            <Suspense fallback={<PageLoader/>}>
+                                <NotFound/>
+                            </Suspense>
                         )
                     )
                 }

@@ -1,14 +1,15 @@
 //Core
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import { withRouter } from "react-router-dom";
 import MetaTags from 'react-meta-tags';
 //Components
 import ErrorBoundary from '../components/ErrorBoundary.jsx';
+import Loader from '../components/Loader.jsx';
 import PostAuthor from '../components/PostAuthor.jsx'
 import PostBody from '../components/PostBody.jsx';
 import PostHeader from '../components/PostHeader.jsx';
-import Loader from '../components/Loader.jsx';
-import NotFound from '../components/NotFound.jsx';
+import PageLoader from '../components/PageLoader.jsx'
+const NotFound = lazy(() => import('../components/NotFound.jsx'));
 //Services
 import api from '../api'
 //Assets
@@ -100,7 +101,9 @@ class Article extends React.Component{
                 </div>
               </>  
               ) : (
-                <NotFound/>
+                <Suspense fallback={<PageLoader/>}>
+                  <NotFound/>
+                </Suspense>
               )
             )
           }
