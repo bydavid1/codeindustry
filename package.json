@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "watch:server": "nodemon server/index.js --ignore src/*.js",
-    "watch:app": "webpack -w",
+    "watch:app": "webpack -w --mode development",
     "build": "webpack"
   },
   "repository": {
