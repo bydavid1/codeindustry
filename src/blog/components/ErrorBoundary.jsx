@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import graphic from '../../../storage/static/error.svg'
 
-class ErrorBoundary extends React.Component {
+export const withError = (Component) => {
+  class ErrorBoundary extends React.Component {
     constructor(props) {
       super(props);
       this.state = { hasError: false };
@@ -15,7 +16,7 @@ class ErrorBoundary extends React.Component {
   
     componentDidCatch(error, errorInfo) {
       // You can also log the error to an error reporting service
-      console.log(`${error} ${errorInfo}`);
+      console.log(`Sending...`);
     }
   
     render() {
@@ -37,8 +38,9 @@ class ErrorBoundary extends React.Component {
         )
       }
   
-      return this.props.children; 
+      return <Component {...this.props}/>; 
     }
   }
 
-export default ErrorBoundary;
+  return ErrorBoundary;
+}
