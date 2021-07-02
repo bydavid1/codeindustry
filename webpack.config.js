@@ -4,6 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const RemovePlugin = require('remove-files-webpack-plugin')
 const Dotenv = require('dotenv-webpack');
 
+require('dotenv').config()
+
 module.exports = {
     mode: process.env.NODE_ENV,
     entry: {
