@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "watch:server": "nodemon server/index.js --ignore src/*.js",
-    "watch:app": "webpack -w --mode development",
+    "watch:app": "webpack -w",
+    "serve": "node ./server/index.js",
     "build": "webpack"
   },
   "repository": {
@@ -26,6 +27,7 @@
     "@fortawesome/react-fontawesome": "^0.1.14",
     "axios": "^0.21.1",
     "cors": "^2.8.5",
+    "dotenv": "^8.6.0",
     "express": "^4.17.1",
     "mongoose": "^5.12.7",
     "morgan": "^1.10.0",
