@@ -1,4 +1,7 @@
+//Core
 import React, { Fragment } from 'react';
+import MetaTags from 'react-meta-tags'
+//Components
 import Project from '../components/Project.jsx';
 import Skill from '../components/Skill.jsx'
 import Links from '../components/Links.jsx'
@@ -6,8 +9,7 @@ import Certification from '../components/Certification.jsx'
 import Experience from '../components/Experience.jsx';
 import GithubActivity from '../components/GithubActivity.jsx'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import account from '../../../storage/images/account.jpg'
-import MetaTags from 'react-meta-tags'
+//Service
 import api from '../api'
 
 class Home extends React.Component {
@@ -24,7 +26,8 @@ class Home extends React.Component {
             experience: [],
             projects: [],
             certifications: [],
-            links: {}
+            links: {},
+            profile: {}
         }
     }
 
@@ -54,7 +57,7 @@ class Home extends React.Component {
                     </MetaTags>
                     <header className="header">
                     <div className="container clearfix">
-                        <img className="profile-image img-fluid float-start rounded-circle" src={account}
+                        <img className="profile-image img-fluid float-start rounded-circle" src={process.env.DB_HOST + this.data.profile.url}
                             alt="profile image" />
                         <div className="profile-content float-start">
                             <h1 className="name">{this.data.fullName}</h1>
