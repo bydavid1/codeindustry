@@ -2,9 +2,9 @@
 import React, { Component } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Link } from 'react-router-dom';
-import MetaTags from 'react-meta-tags';
 //Components
 import { withError } from '../components/ErrorBoundary.jsx';
+import SEO from '../components/SEO.jsx'
 import Loader from '../components/Loader.jsx';
 //Services
 import api from '../api';
@@ -17,7 +17,9 @@ class About extends Component {
         this.state = {
             loading: true
         }
-        this.about = {}
+        this.about = {
+            SEO: {}
+        }
     }
     
 
@@ -45,23 +47,7 @@ class About extends Component {
                         <Loader/>
                     ) : (
                         <>
-                            <MetaTags>
-                                <title>{ this.about.title }</title>
-                                <meta name="description" content={ this.about.extract } /> 
-            
-                                {/* og meta */}
-                                <meta property="og:title" content={ this.about.title }  />
-                                <meta property="og:description" content={ this.about.extract } />
-                                <meta property="og:image" content={ this.about.image ? this.about.image.url : ''}  />
-                                <meta property="og:url" content={this.about.url}/>
-                                <meta property="og:type" content={this.about.website}/>
-                                {/* twitter meta */}
-                                <meta name="twitter:card" content="summary_large_image"/>
-                                <meta property="twitter:url" content={this.about.url}/>
-                                <meta name="twitter:title" content={ this.about.title }/>
-                                <meta name="twitter:description" content={ this.about.extract }/>
-                                <meta name="twitter:image" content={ this.about.image ? this.about.image.url : ''}/>
-                            </MetaTags>
+                            <SEO info={this.about.SEO} />
                             <div className="page-header">
                                 <div className="container">
                                     <div className="row">
@@ -80,7 +66,7 @@ class About extends Component {
                                     <div className="row">
                                         <div className="col-md-8">
                                             <ReactMarkdown>
-                                                { this.about.Content }
+                                                { this.about.content }
                                             </ReactMarkdown>
                                         </div>
                                         <div className="col-md-4">

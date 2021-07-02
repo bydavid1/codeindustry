@@ -27,7 +27,10 @@ class Home extends React.Component {
             projects: [],
             certifications: [],
             links: {},
-            profile: {}
+            profile: {},
+            SEO: {
+                image: {}
+            }
         }
     }
 
@@ -50,14 +53,15 @@ class Home extends React.Component {
             return (
                 <Fragment>
                     <MetaTags>
-                        <title>Portfolio</title>
-                        <meta property="og:title" content="Byron portfolio" />
-                        <meta property="og:description" content="Professional info about Byron Jimenez" />
-                        <meta property="og:image" content="" />
+                        <title>{this.data.SEO.title}</title>
+                        <meta property="og:title" content={this.data.SEO.title} />
+                        <meta property="og:description" content={this.data.SEO.extract} />
+                        <meta property="og:image" content={ `${process.env.DB_HOST}${this.data.SEO.image.url}` }  />
+                        <meta property="og:type" content={this.data.SEO.type}  />
                     </MetaTags>
                     <header className="header">
                     <div className="container clearfix">
-                        <img className="profile-image img-fluid float-start rounded-circle" src={process.env.DB_HOST + this.data.profile.url}
+                        <img className="profile-image img-fluid float-start rounded-circle" src={ `${process.env.DB_HOST}${this.data.profile.url}` }
                             alt="profile image" />
                         <div className="profile-content float-start">
                             <h1 className="name">{this.data.fullName}</h1>

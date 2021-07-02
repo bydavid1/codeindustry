@@ -1,9 +1,9 @@
 //Core
 import React from 'react'
-import MetaTags from 'react-meta-tags';
 import { Link } from 'react-router-dom';
 //Components
 import { withError } from '../components/ErrorBoundary.jsx';
+import SEO from '../components/SEO.jsx'
 import Post from '../components/Post.jsx'
 import Loader from '../components/Loader.jsx';
 //Services
@@ -18,7 +18,7 @@ class Home extends React.Component {
         }
 
         this.home = {
-            info: {},
+            SEO: {},
             ids: {
                 editorsPick: [],
                 recents: [],
@@ -54,23 +54,7 @@ class Home extends React.Component {
     render() {
         return (
             <>
-                <MetaTags>
-                    <title>{ this.home.title }</title>
-                    <meta name="description" content={ this.home.extract } /> 
-
-                    {/* og meta */}
-                    <meta property="og:title" content={ this.home.title }  />
-                    <meta property="og:description" content={ this.home.extract } />
-                    <meta property="og:image" content={ this.home.image ? this.home.image.url : ''}  />
-                    <meta property="og:url" content={this.home.url}/>
-                    <meta property="og:type" content={this.home.website}/>
-                    {/* twitter meta */}
-                    <meta name="twitter:card" content="summary_large_image"/>
-                    <meta property="twitter:url" content={this.home.url}/>
-                    <meta name="twitter:title" content={ this.home.title }/>
-                    <meta name="twitter:description" content={ this.home.extract }/>
-                    <meta name="twitter:image" content={ this.home.image ? this.home.image.url : ''}/>
-                </MetaTags>
+                <SEO info={this.home.SEO}/>
                 <div className="page-header">
                     <div className="container-xl">
                         <div className="row">
