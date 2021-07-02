@@ -3,3 +3,4 @@ public/*
 storage/images
 storage/documents
 .env
+*.http
