@@ -1,5 +1,5 @@
 import React from 'react'
-import avatar from '../../../storage/static/avatar.png'
+import avatar from '../../../storage/static/avatar.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const PostAuthor = (props) => {

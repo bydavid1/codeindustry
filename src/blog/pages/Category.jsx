@@ -11,7 +11,7 @@ const NotFound = lazy(() => import('../components/NotFound.jsx'));
 //Services
 import api from '../api'
 //Assets
-import adPlaceholder from '../../../storage/static/ad-1.jpg'
+import adPlaceholder from '../../../storage/static/ad.svg'
 
 class Category extends React.Component {
 
