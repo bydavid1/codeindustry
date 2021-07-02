@@ -1,9 +1,9 @@
 //Core
 import React, { lazy, Suspense } from 'react'
-import MetaTags from 'react-meta-tags';
 import { Link } from 'react-router-dom';
 //Components
 import { withError } from '../components/ErrorBoundary.jsx';
+import SEO from '../components/SEO.jsx'
 import Post from '../components/Post.jsx'
 import Loader from '../components/Loader.jsx';
 import PageLoader from '../components/PageLoader.jsx'
@@ -11,7 +11,7 @@ const NotFound = lazy(() => import('../components/NotFound.jsx'));
 //Services
 import api from '../api'
 //Assets
-import adPlaceholder from '../../../storage/static/ad-1.jpg'
+import adPlaceholder from '../../../storage/static/ad.svg'
 
 class Tag extends React.Component {
 
@@ -83,23 +83,7 @@ class Tag extends React.Component {
                     ) : (
                         this.state.status === 200 ? (
                             <>
-                                <MetaTags>
-                                    <title>{ this.state.tag.name }</title>
-                                    <meta name="description" content={ this.state.tag.extract ? this.state.tag.extract : '' } /> 
-                
-                                    {/* og meta */}
-                                    <meta property="og:title" content={ this.state.tag.name }  />
-                                    <meta property="og:description" content={ this.state.tag.extract ? this.state.tag.extract : '' } />
-                                    <meta property="og:image" content={ this.state.tag.logo ? this.state.tag.logo.url : '' }  />
-                                    <meta property="og:url" content={window.location.href}/>
-                                    <meta property="og:type" content="website"/>
-                                    {/* twitter meta */}
-                                    <meta name="twitter:card" content="summary_large_image"/>
-                                    <meta property="twitter:url" content={window.location.href}/>
-                                    <meta name="twitter:title" content={ this.state.tag.name }/>
-                                    <meta name="twitter:description" content={ this.state.tag.extract ? this.state.tag.extract : '' }/>
-                                    <meta name="twitter:image" content={ this.state.tag.logo ? this.state.tag.logo.url : '' }/>
-                                </MetaTags>
+                                <SEO info={this.state.tag.SEO}/>
                                 <div className="page-header">
                                     <div className="container">
                                         <div className="row">

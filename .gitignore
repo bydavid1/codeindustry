@@ -1,4 +1,6 @@
 node_modules
 public/*
-storage/
+storage/images
+storage/documents
 .env
+*.http
