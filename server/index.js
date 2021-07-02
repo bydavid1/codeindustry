@@ -6,16 +6,16 @@ const routes = require('./routes/routes')
 const db = require('./database/connection')
 const cors = require('cors')
 
-db.mongoose.connect(db.url, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true
-}).then(() => {
-    console.log("Database connected")
-}).catch(err => {
-    console.log(err)
-})
+// db.mongoose.connect(db.url, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     useFindAndModify: false,
+//     useCreateIndex: true
+// }).then(() => {
+//     console.log("Database connected")
+// }).catch(err => {
+//     console.log(err)
+// })
 
 app.set('port', process.env.PORT || 8080)
 

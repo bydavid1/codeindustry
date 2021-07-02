@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const PostHeader = (props) => {
     return (
         <>
-            <div className="background-img" style={{backgroundImage: 'url(http://localhost:1337' + props.cover +')'}}></div>
+            <div className="background-img" style={{backgroundImage: `url('${process.env.DB_HOST}${props.cover}')`}}></div>
             <div className="container">
                 <div className="row">
                 <div className="col-md-10">
