@@ -8,9 +8,7 @@ require('dotenv').config()
 
 module.exports = {
     mode: process.env.NODE_ENV,
-    entry: {
-        blog: path.resolve(__dirname, 'src/index.js')
-    },
+    entry:  path.resolve(__dirname, 'src/index.js'),
     output: {
         path: path.resolve(__dirname, 'public/'),
         publicPath: '/',
@@ -53,14 +51,12 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template: 'blog.html',
-            chunks: ['blog']
+            template: 'index.html',
         }),
         new RemovePlugin({
             before: {
-                root: './public',
+                include: ['./public'],
                 exclude: ['./storage'],
-                include: ['./css', './js']
             },
             watch: {
                 root: './public',
