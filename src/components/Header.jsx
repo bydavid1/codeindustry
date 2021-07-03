@@ -75,6 +75,9 @@ class Header extends React.Component {
 										</li>
 									)
 								}
+								<li>
+									<Link to='/portfolio'>Portfolio</Link>
+								</li>
 							</ul>
 
 							<div className="nav-btns">

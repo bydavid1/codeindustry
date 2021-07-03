@@ -11,6 +11,8 @@ import GithubActivity from '../components/portfolio/GithubActivity.jsx'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 //Service
 import api from '../api'
+//Assets
+import '../../resources/scss/portfolio.scss'
 
 class Home extends React.Component {
 
