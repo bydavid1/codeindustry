@@ -6,6 +6,8 @@ const routes = require('./routes/routes')
 const db = require('./database/connection')
 const cors = require('cors')
 
+require('dotenv').config()
+
 // db.mongoose.connect(db.url, {
 //     useNewUrlParser: true,
 //     useUnifiedTopology: true,

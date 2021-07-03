@@ -2,12 +2,12 @@
 import React, { Fragment } from 'react';
 import MetaTags from 'react-meta-tags'
 //Components
-import Project from '../components/Project.jsx';
-import Skill from '../components/Skill.jsx'
-import Links from '../components/Links.jsx'
-import Certification from '../components/Certification.jsx'
-import Experience from '../components/Experience.jsx';
-import GithubActivity from '../components/GithubActivity.jsx'
+import Project from '../components/portfolio/Project.jsx';
+import Skill from '../components/portfolio/Skill.jsx'
+import Links from '../components/portfolio/Links.jsx'
+import Certification from '../components/portfolio/Certification.jsx'
+import Experience from '../components/portfolio/Experience.jsx';
+import GithubActivity from '../components/portfolio/GithubActivity.jsx'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 //Service
 import api from '../api'

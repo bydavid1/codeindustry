@@ -9,6 +9,7 @@ const Category = lazy(() => import('./pages/Category.jsx'))
 const About = lazy(() => import('./pages/About.jsx'))
 const Contact = lazy(() => import('./pages/Contact.jsx'))
 const Tag = lazy(() => import('./pages/Tag.jsx'))
+const Portfolio = lazy(() => import('./pages/Portfolio.jsx'))
 const NotFound = lazy(() => import('./components/NotFound.jsx'))
 const Header = lazy(() => import('./components/Header.jsx'))
 const Footer = lazy(() => import('./components/Footer.jsx'))
@@ -48,6 +49,7 @@ function App() {
                             <Route exact path="/tag/:slug" component={Tag}/>
                             <Route exact path="/about" component={About}/>
                             <Route exact path="/contact" component={Contact}/>
+                            <Route exact path="/portfolio" component={Portfolio}/>
                             <Route path="*" component={NotFound}/>
                         </Switch>
                     <Footer menu={menu}/>
