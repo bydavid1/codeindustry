@@ -2,7 +2,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { EmailShareButton, FacebookShareButton, LinkedinShareButton, TwitterShareButton } from 'react-share';
 import { Link } from 'react-router-dom'
-import logo from '../../../storage/static/logo.svg'
+import logo from '../../storage/static/logo.svg'
 
 const Footer = (props) => {
   const url = window.location.href

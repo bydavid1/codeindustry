@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../../../resources/scss/loader.scss'
+import '../../resources/scss/loader.scss'
 
 class PageLoader extends Component {
     render() {

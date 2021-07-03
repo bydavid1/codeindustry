@@ -11,7 +11,7 @@ const NotFound = lazy(() => import('../components/NotFound.jsx'));
 //Services
 import api from '../api'
 //Assets
-import adPlaceholder from '../../../storage/static/ad.svg'
+import adPlaceholder from '../../storage/static/ad.svg'
 
 class Tag extends React.Component {
 

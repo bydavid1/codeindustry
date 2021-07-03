@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import graphic from '../../../storage/static/error.svg'
+import graphic from '../../storage/static/error.svg'
 
 export const withError = (Component) => {
   class ErrorBoundary extends React.Component {

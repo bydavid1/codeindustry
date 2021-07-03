@@ -9,8 +9,7 @@ require('dotenv').config()
 module.exports = {
     mode: process.env.NODE_ENV,
     entry: {
-        portfolio: path.resolve(__dirname, 'src/portfolio/index.js'),
-        blog: path.resolve(__dirname, 'src/blog/index.js')
+        blog: path.resolve(__dirname, 'src/index.js')
     },
     output: {
         path: path.resolve(__dirname, 'public/'),
@@ -51,11 +50,6 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: 'css/[name].css',
             chunkFilename: '[id].css'
-        }),
-        new HtmlWebpackPlugin({
-            filename: 'portfolio.html',
-            template: 'portfolio.html',
-            chunks: ['portfolio']
         }),
         new HtmlWebpackPlugin({
             filename: 'index.html',

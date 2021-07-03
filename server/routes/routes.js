@@ -22,10 +22,6 @@ router.get('/account/info',  AccountController.info)
 
 router.get('/curriculum', DocumentController.curriculum)
 
-router.get('/portfolio', function(req, res){
-    res.sendFile(path.join(__dirname, '../../public/portfolio.html'))
-})
-
 // Dont stage 
 router.get('*', function(req, res){
     res.sendFile(path.join(__dirname, '../../public/index.html'))

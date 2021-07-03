@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import graphic from '../../../storage/static/notfound.svg'
+import graphic from '../../storage/static/notfound.svg'
 
 class NotFound extends Component {
     render() {

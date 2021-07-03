@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { EmailShareButton, FacebookShareButton, LinkedinShareButton, TwitterShareButton } from 'react-share';
-import logo from '../../../storage/static/logo.svg'
+import logo from '../../storage/static/logo.svg'
 
 class Header extends React.Component {
 
