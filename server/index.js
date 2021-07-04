@@ -1,23 +1,11 @@
+const serverless = require('serverless-http');
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path')
-const app = express();
-const routes = require('./routes/routes')
-const db = require('./database/connection')
 const cors = require('cors')
+const app = express();
 
-// db.mongoose.connect(db.url, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//     useFindAndModify: false,
-//     useCreateIndex: true
-// }).then(() => {
-//     console.log("Database connected")
-// }).catch(err => {
-//     console.log(err)
-// })
-
-app.set('port', process.env.PORT || 8080)
+const routes = require('./routes/routes')
 
 app.use(express.static(path.join(__dirname, '../public/')))
 app.use(express.json())
@@ -25,7 +13,13 @@ app.use(morgan('tiny'))
 app.use(cors())
 app.use('/', routes)
 
+if(process.env.NODE_ENV == 'development') {
 
-app.listen(app.get('port'), () => {
-    console.log(`Server listen on http://127.0.0.1:${app.get('port')}`);
-})
+    app.set('port', process.env.PORT || 3000)
+
+    app.listen(app.get('port'), () => {
+        console.log(`Server listen on http://127.0.0.1:${app.get('port')}`);
+    })    
+} else {
+    module.exports.handler = serverless(app);
+}

@@ -1,12 +1,12 @@
 {
   "name": "bydavid1.github.io",
-  "version": "1.0.0",
+  "version": "1.0.0-betav1",
   "description": "My portfolio",
-  "main": "src/index.js",
+  "main": "server/index.js",
   "scripts": {
-    "watch:server": "nodemon server/index.js --ignore src/*.js",
+    "start": "nodemon server/index.js --ignore src/*.js",
     "watch:app": "webpack -w",
-    "serve": "node ./server/index.js",
+    "serve": "netlify-lambda build server",
     "build": "webpack"
   },
   "repository": {
@@ -29,8 +29,8 @@
     "cors": "^2.8.5",
     "dotenv": "^8.6.0",
     "express": "^4.17.1",
-    "mongoose": "^5.12.7",
     "morgan": "^1.10.0",
+    "netlify-lambda": "^2.0.10",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-github-activity": "^1.0.2",
@@ -38,7 +38,8 @@
     "react-meta-tags": "^1.0.1",
     "react-router-dom": "^5.2.0",
     "react-share": "^4.4.0",
-    "react-syntax-highlighter": "^15.4.3"
+    "react-syntax-highlighter": "^15.4.3",
+    "serverless-http": "^2.7.0"
   },
   "devDependencies": {
     "@babel/core": "7.12.13",
