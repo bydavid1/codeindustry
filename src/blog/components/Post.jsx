@@ -6,7 +6,7 @@ const domain = process.env.DB_HOST
 const Post = (props) => {
     const thumb = 
         <div className="post post-thumb">
-            <Link className="post-img" to={'/post/' + props.postSlug}><img src={domain + props.cover} alt=""/></Link>
+            <Link className="post-img" to={'/post/' + props.postSlug}><img src={props.cover} alt=""/></Link>
             <div className="post-body">
                 <div className="post-meta">
                     <Link className="post-category cat-2" to={'/category/' + props.categorySlug}>{props.category}</Link>
@@ -27,7 +27,7 @@ const Post = (props) => {
 
     const def =                                          
         <div className="post">
-            <Link className="post-img" to={'/post/' + props.postSlug}><img src={domain + props.cover} alt=""/></Link>
+            <Link className="post-img" to={'/post/' + props.postSlug}><img src={ props.cover} alt=""/></Link>
             <div className="post-body">
                 <div className="post-meta">
                     <Link className="post-category cat-2" to={'/category/' + props.categorySlug}>{props.category}</Link>
