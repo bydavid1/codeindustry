@@ -7,7 +7,8 @@
     "start": "nodemon server/index.js --ignore src/*.js",
     "watch:app": "webpack -w",
     "serve": "netlify-lambda build server",
-    "build": "webpack"
+    "build": "webpack",
+    "deploy": "npm run build && npm run serve"
   },
   "repository": {
     "type": "git",
