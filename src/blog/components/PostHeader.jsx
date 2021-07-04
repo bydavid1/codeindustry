@@ -9,7 +9,7 @@ const PostHeader = (props) => {
                 <div className="row">
                 <div className="col-md-10">
                     <div className="post-meta">
-                    <Link className="post-category cat-2" to={'/category/' + props.categorySlug}>{props.category}</Link>
+                    <Link className="post-category cat-2" to={ `/category/${props.categorySlug}` }>{props.category}</Link>
                     <span className="post-date">{props.date}</span>
                     </div>
                     <h1>{props.title}</h1>

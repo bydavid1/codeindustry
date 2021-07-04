@@ -32,7 +32,7 @@ class Article extends React.Component{
 
   componentDidMount() {
     let slug = this.props.match.params.slug
-    api.get('/posts/content/' + slug)
+    api.get(`/posts/content/${slug}`)
     .then(response => {
       this.article = response.data;
         this.setState({
