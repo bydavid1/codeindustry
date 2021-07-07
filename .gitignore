@@ -4,3 +4,5 @@ storage/images
 storage/documents
 .env
 *.http
+.vercel
+vercel.json
