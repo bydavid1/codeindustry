@@ -56,12 +56,12 @@ class Home extends React.Component {
                         <title>{this.data.SEO.title}</title>
                         <meta property="og:title" content={this.data.SEO.title} />
                         <meta property="og:description" content={this.data.SEO.extract} />
-                        <meta property="og:image" content={ `${process.env.DB_HOST}${this.data.SEO.image.url}` }  />
+                        <meta property="og:image" content={ `${this.data.SEO.image.url}` }  />
                         <meta property="og:type" content={this.data.SEO.type}  />
                     </MetaTags>
                     <header className="header">
                     <div className="container clearfix">
-                        <img className="profile-image img-fluid float-start rounded-circle" src={ `${process.env.DB_HOST}${this.data.profile.url}` }
+                        <img className="profile-image img-fluid float-start rounded-circle" src={ `${this.data.profile.url}` }
                             alt="profile image" />
                         <div className="profile-content float-start">
                             <h1 className="name">{this.data.fullName}</h1>
@@ -95,7 +95,7 @@ class Home extends React.Component {
                                                         <Project key={project._id} 
                                                             title={project.title} 
                                                             link={project.link} 
-                                                            image={project.image ? process.env.DB_HOST + project.image.url : ''}
+                                                            image={project.image ? project.image.url : ''}
                                                             description={project.description} />)
                                                 ) : (
                                                     <div className="d-flex justify-content-center">
@@ -105,8 +105,6 @@ class Home extends React.Component {
                                                     </div>
                                                 )
                                             }
-                                            <h6>
-                                                <FontAwesomeIcon icon="info-circle" className="mx-1"/>Some projects are missing</h6>
                                             <hr />
                                             <a className="btn btn-cta-secondary" href="https://github.com/bydavid1">More on GitHub
                                                 <FontAwesomeIcon icon="chevron-right" className="ms-2" /></a>

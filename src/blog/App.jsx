@@ -29,7 +29,7 @@ function App() {
         api.get('/tags/menu')
         .then(response => {
             tags = response.data.map(item => {
-                return {name: item.name, link: '/tag/' + item.slug}
+                return {name: item.name, link: `/tag/${item.slug}` }
             })
             setMenu(def.concat(tags)) 
         })

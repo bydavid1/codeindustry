@@ -4,9 +4,9 @@
   "description": "My portfolio",
   "main": "src/index.js",
   "scripts": {
-    "watch:server": "nodemon server/index.js --ignore src/*.js",
+    "start": "nodemon index.js --ignore src/*.js",
     "watch:app": "webpack -w",
-    "serve": "node ./server/index.js",
+    "serve": "node index.js",
     "build": "webpack"
   },
   "repository": {
