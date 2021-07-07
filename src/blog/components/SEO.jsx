@@ -3,6 +3,14 @@ import MetaTags from 'react-meta-tags';
 
 class SEO extends Component {
 
+    /*
+    * @object: info {
+        title,
+        extract,
+        image,
+        type
+    }
+    */
     constructor(props) {
         super(props);
     }
@@ -21,7 +29,7 @@ class SEO extends Component {
                     <meta property="og:title" content={ this.props.info.title }  />
                     <meta property="og:description" content={ extract } />
                     <meta property="og:image" content={ image }  />
-                    <meta property="og:type" content={this.props.info.website}/>
+                    <meta property="og:type" content={this.props.info.type}/>
                     <meta property="og:url" content={window.location.href}/>
                     {/* twitter meta */}
                     <meta name="twitter:card" content="summary_large_image"/>
