@@ -13,51 +13,43 @@ class SEO extends Component {
     */
     constructor(props) {
         super(props);
+        this.defaultValues = {
+            title: 'Code Industry',
+            image : 'https://res.cloudinary.com/dtxys5wow/image/upload/v1625678786/main/logo_08fea0bd44.svg',
+            extract: 'Un blog hecho por entusiastas de la programación',
+            type: 'website'
+        }
     }
 
     render() {
-        if (this.props.info != undefined) {
-            const extract = this.props.info.extract ? this.props.info.extract.slice(0, 150) : ''
-            const image = this.props.info.image ? this.props.info.image.url : ''
-    
-            return (
-                <MetaTags>
-                    <title>{ this.props.info.title }</title>
-                    <meta name="description" content={ extract } /> 
-    
-                    {/* og meta */}
-                    <meta property="og:title" content={ this.props.info.title }  />
-                    <meta property="og:description" content={ extract } />
-                    <meta property="og:image" content={ image }  />
-                    <meta property="og:type" content={this.props.info.type}/>
-                    <meta property="og:url" content={window.location.href}/>
-                    {/* twitter meta */}
-                    <meta name="twitter:card" content="summary_large_image"/>
-                    <meta name="twitter:title" content={ this.props.info.title }/>
-                    <meta name="twitter:description" content={ extract }/>
-                    <meta name="twitter:image" content={ image }/>
-                    <meta property="twitter:url" content={window.location.href}/>
-                </MetaTags>
-            );
-        } else {
-            return (
-                <MetaTags>
-                    <title>Code industry</title>
-                    <meta name="description" content="A blog for enthusiasts" /> 
 
-                    {/* og meta */}
-                    <meta property="og:title" content="Code industry" />
-                    <meta property="og:description" content="A blog for enthusiasts" />
-                    <meta property="og:type" content="website"/>
-                    <meta property="og:url" content={window.location.href}/>
-                    {/* twitter meta */}
-                    <meta name="twitter:card" content="summary_large_image"/>
-                    <meta name="twitter:title" content="Code industry"/>
-                    <meta name="twitter:description" content="A blog for enthusiasts"/>
+        let title, extract, image, type;
+
+            title = this.props.info?.title ? `${this.props.info.title } | Code Industry` : this.defaultValues.title
+            extract =  this.props.info?.extract ? this.props.info.extract?.slice(0, 150) : this.defaultValues.extract;
+            image = this.props.info?.image ? this.props.info.image.url : this.defaultValues.image;
+            type = this.props.info?.title ? this.props.info.type : this.defaultValues.type
+
+        return (
+            <MetaTags>
+                <title>{ title }</title>
+                <meta name="description" content={ extract } /> 
+
+                {/* og meta */}
+                <meta property="og:title" content={ title  }  />
+                <meta property="og:description" content={ extract } />
+                <meta property="og:image" content={ image }  />
+                <meta property="og:type" content={ type }/>
+                <meta property="og:url" content={window.location.href}/>
+
+                {/* twitter meta */}
+                <meta name="twitter:card" content="summary_large_image"/>
+                <meta name="twitter:title" content={ type }/>
+                <meta name="twitter:description" content={ extract }/>
+                <meta name="twitter:image" content={ image }/>
                 <meta property="twitter:url" content={window.location.href}/>
-                </MetaTags>
-            )
-        }
+            </MetaTags>
+        )
     }
 }
 
