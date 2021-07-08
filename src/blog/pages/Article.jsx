@@ -60,22 +60,22 @@ class Article extends React.Component{
                 <>
                 <SEO info={{
                   title: this.article.title,
-                  description: this.article.content,
-                  image: this.article.cover.url,
+                  extract: this.article.content,
+                  image: this.article.cover,
                   type: 'article'
                 }}/>
                 <div className="page-header post-header">
-                  <PostHeader cover={this.article.cover.url } date={this.article.date}
-                    title={this.article.title} category={this.article.category.title} categorySlug={this.article.category.slug} />
+                  <PostHeader cover={ this.article.cover.url } date={ this.article.date }
+                    title={ this.article.title } category={ this.article.category.title } categorySlug={ this.article.category.slug } />
                 </div>
                 <div className="section">
                   <div className="container">
                     <div className="row">
                       <div className="col-md-8">
-                        <PostBody content={this.article.content} />
+                        <PostBody content={ this.article.content } />
                         <hr />
-                        <PostAuthor firstname={this.article.created_by.firstname}
-                          lastname={this.article.created_by.lastname} />
+                        <PostAuthor firstname={ this.article.created_by.firstname }
+                          lastname={ this.article.created_by.lastname } />
                       </div>
                       <div className="col-md-4">
                         <div className="aside-widget text-center">
