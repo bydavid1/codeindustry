@@ -10,6 +10,7 @@ import {
     faTwitter
 } from '@fortawesome/free-brands-svg-icons';
 import {
+    faBlog,
     faCalendar,
     faChevronCircleRight,
     faChevronRight,
@@ -40,4 +41,5 @@ library.add(faMapMarkerAlt,
     faCodepen,
     faFacebook,
     faTwitter,
-    faDownload)
+    faDownload,
+    faBlog)
