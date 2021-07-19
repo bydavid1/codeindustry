@@ -69,8 +69,8 @@ class Home extends React.Component {
                             <Links links={this.data.links}/>
                             <h6><i className="fa fa-exclamation-circle mr-1"></i>Building Portfolio</h6>
                         </div>
-                        <a className="btn btn-success float-end" href="/curriculum" target="_blank">
-                            <FontAwesomeIcon icon="download"/> Descargar CV</a>
+                        <a className="btn btn-success float-end" href="https://codeindustry.vercel.app/" target="_blank">
+                            <FontAwesomeIcon icon="blog" className="me-2"/>Visit my blog</a>
                     </div>
                 </header>
                     <div className="container sections-wrapper">
@@ -144,6 +144,38 @@ class Home extends React.Component {
                                         <GithubActivity />
                                     </div>
                                 </section>
+
+                                <aside className="list conferences aside section">
+                                    <aside className="credits aside section">
+                                        <div className="section-inner shadow-sm rounded">
+                                            <h2 className="heading">Credits</h2>
+                                            <div className="content">
+                                                <ul className="list-unstyled pb-2">
+                                                    <li>
+                                                        <a href="https://getbootstrap.com/" target="_blank">
+                                                            <FontAwesomeIcon icon="external-link-alt" />Bootstrap
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://fortawesome.github.io/Font-Awesome/" target="_blank">
+                                                            <FontAwesomeIcon icon="external-link-alt" />FontAwesome
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://github.com/IonicaBizau/github-calendar" target="_blank">
+                                                            <FontAwesomeIcon icon="external-link-alt" />GitHub Calendar Plugin
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://caseyscarborough.com/projects/github-activity/" target="_blank">
+                                                            <FontAwesomeIcon icon="external-link-alt" />GitHub Activity Stream
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </aside>
+                                </aside>
                             </div>
     
                             <div className="secondary col-lg-4 col-12">
@@ -233,6 +265,7 @@ class Home extends React.Component {
                                                     <span className="level">Write <br className="visible-sm visible-xs" />
                                                         <FontAwesomeIcon icon="star" />
                                                         <FontAwesomeIcon icon="star" />
+                                                        <FontAwesomeIcon icon="star" />
                                                     </span>
                                                 </li>
                                                 <li className="item">
@@ -255,49 +288,6 @@ class Home extends React.Component {
                                             </ul>
                                         </div>
                                     </div>
-                                </aside>
-    
-                                <aside className="list music aside section">
-                                    <div className="section-inner shadow-sm rounded">
-                                        <h2 className="heading">Favourite coding music</h2>
-                                        <div className="content">
-                                            <iframe src="https://open.spotify.com/embed?uri=spotify:playlist:7D3Qw59hB8XhqUdIZImepN"
-                                                width="300" height="380" frameBorder="0" allowtransparency="true"
-                                                allow="encrypted-media"></iframe>
-                                        </div>
-                                    </div>
-                                </aside>
-    
-                                <aside className="list conferences aside section">
-                                    <aside className="credits aside section">
-                                        <div className="section-inner shadow-sm rounded">
-                                            <h2 className="heading">Credits</h2>
-                                            <div className="content">
-                                                <ul className="list-unstyled pb-2">
-                                                    <li>
-                                                        <a href="https://getbootstrap.com/" target="_blank">
-                                                            <FontAwesomeIcon icon="external-link-alt" />Bootstrap
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="https://fortawesome.github.io/Font-Awesome/" target="_blank">
-                                                            <FontAwesomeIcon icon="external-link-alt" />FontAwesome
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="https://github.com/IonicaBizau/github-calendar" target="_blank">
-                                                            <FontAwesomeIcon icon="external-link-alt" />GitHub Calendar Plugin
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="https://caseyscarborough.com/projects/github-activity/" target="_blank">
-                                                            <FontAwesomeIcon icon="external-link-alt" />GitHub Activity Stream
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </aside>
                                 </aside>
                             </div>
                         </div>
